@@ -11,11 +11,21 @@ npm install mistica-react-native
 ## Usage
 
 ```js
-import { MisticaReactNativeView } from "mistica-react-native";
+import { MisticaTextInput } from "mistica-react-native";
 
 // ...
-
-<MisticaReactNativeView color="tomato" />
+    <MisticaTextInput
+        style={{
+          position: 'absolute',
+          top: 100,
+          left: 15,
+          right: 0,
+          bottom: 0,
+          width: '90%',
+        }}
+        inputText="text"
+        onChangeText={() => {}}
+    />
 ```
 
 ## Contributing
