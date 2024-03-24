@@ -1,19 +1,19 @@
 import React, { useState } from 'react';
 
-import { Alert, StyleSheet, View } from 'react-native';
-import { MisticaButton, MisticaTextInput, buttonEventEmitter } from 'mistica-react-native';
+import { StyleSheet, Text, View } from 'react-native';
+import {
+  MisticaButton,
+  MisticaTextInput,
+  buttonEventEmitter,
+} from 'mistica-react-native';
 
 export default function App() {
-
-  const [value, setValue] = useState("")
+  const [value, setValue] = useState('');
   const [titleText, setTitleText] = useState("Bird's Nest");
 
-
-
   const handleChangeValue = (text: string) => {
-    setValue(text)
-  }
-
+    setValue(text);
+  };
 
   const handlePress = () => {
     setTitleText(value);
@@ -27,7 +27,6 @@ export default function App() {
     // Aqui você pode adicionar a lógica desejada quando o botão é pressionado no lado nativo
   });
 
-
   return (
     <View style={styles.container}>
       <MisticaTextInput
@@ -37,21 +36,33 @@ export default function App() {
           left: 15,
           right: 0,
           bottom: 0,
-          width: "90%",
+          width: '90%',
         }}
         inputText={value}
         onChangeText={handleChangeValue}
       />
+
+      <Text
+        style={{
+          position: 'absolute',
+          left: 120,
+          top: 170,
+          fontSize: 20,
+        }}
+      >
+        {titleText}
+      </Text>
+
       <MisticaButton
         style={{
           width: 300,
           height: 50,
-          position: "absolute",
+          position: 'absolute',
           bottom: 20,
           left: 35,
         }}
         text="Meu Botão Mistica"
-        onPress={() => Alert.alert("Botao acionado")}
+        onPress={handlePress}
       />
     </View>
   );
