@@ -7,7 +7,19 @@ import {
   type TextInputProps,
   NativeModules,
   NativeEventEmitter,
+  DeviceEventEmitter
 } from 'react-native';
+
+const actionEventModule = NativeModules.ActionEventModule;
+export const ActionEventEmitter = new NativeEventEmitter(actionEventModule);
+
+// // Chamar a função do módulo Kotlin e passar o nome do evento
+// DeviceEventEmitter.emit('handleEvent', 'customEvent');
+
+// // Ouvir o evento de resposta
+// DeviceEventEmitter.addListener('customEvent', (responseData) => {
+//     console.log('Evento de resposta recebido:', responseData);
+// });
 
 const LINKING_ERROR =
   `The package 'mistica-react-native' doesn't seem to be linked. Make sure: \n\n` +
@@ -18,18 +30,20 @@ const LINKING_ERROR =
 interface MisticaButtonProps extends Omit<ViewProps, 'onPress'> {
   style: ViewStyle; // Propriedade customizada para estilos
   text?: string;
+  title?: string
   isLoading?: boolean;
   buttonStyle?: string;
   onPress?: () => void;
+  eventName?: string
 }
 
-const MisticaButtonName = 'MisticaButton';
-export const MisticaButton =
-  UIManager.getViewManagerConfig(MisticaButtonName) != null
-    ? requireNativeComponent<MisticaButtonProps>(MisticaButtonName)
+const ButtonName = 'Button';
+export const Button =
+  UIManager.getViewManagerConfig(ButtonName) != null
+    ? requireNativeComponent<MisticaButtonProps>(ButtonName)
     : () => {
-        throw new Error(LINKING_ERROR);
-      };
+      throw new Error(LINKING_ERROR);
+    };
 
 interface MisticaTextInputProps extends TextInputProps {
   style: ViewStyle; // Propriedade customizada para estilos
@@ -37,15 +51,14 @@ interface MisticaTextInputProps extends TextInputProps {
   inputCounterEnabled?: boolean;
   inputMaxLength?: number;
   inputAutofillEnabled?: boolean;
+  eventName?: string
 }
 
-const MisticaTextInputName = 'MisticaTextInput';
-export const MisticaTextInput =
-  UIManager.getViewManagerConfig(MisticaTextInputName) != null
-    ? requireNativeComponent<MisticaTextInputProps>(MisticaTextInputName)
+const TextInputName = 'TextInput';
+export const TextInput =
+  UIManager.getViewManagerConfig(TextInputName) != null
+    ? requireNativeComponent<MisticaTextInputProps>(TextInputName)
     : () => {
-        throw new Error(LINKING_ERROR);
-      };
+      throw new Error(LINKING_ERROR);
+    };
 
-const ButtonEventModule = NativeModules.ButtonEventModule;
-export const buttonEventEmitter = new NativeEventEmitter(ButtonEventModule);

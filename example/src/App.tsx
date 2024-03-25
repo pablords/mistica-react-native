@@ -1,35 +1,70 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
-import { StyleSheet, Text, View } from 'react-native';
+import { Alert, StyleSheet, Text, View } from 'react-native';
 import {
-  MisticaButton,
-  MisticaTextInput,
-  buttonEventEmitter,
+  Button,
+  TextInput,
+  ActionEventEmitter,
 } from 'mistica-react-native';
 
+
+
 export default function App() {
-  const [value, setValue] = useState('');
-  const [titleText, setTitleText] = useState("Bird's Nest");
+  const [primaryValue, setPrimaryValueValue] = useState('');
+  const [secondaryValue, setSecondaryValue] = useState('');
 
-  const handleChangeValue = (text: string) => {
-    setValue(text);
+  const buttonPrimaryEvent = useRef<string>('buttonPrimaryEvent')
+  const buttonSecondaryEvent = useRef<string>('buttonSecondaryEvent')
+  const textPrimaryEvent = useRef<string>('textPrimaryEvent')
+  const textSecondaryEvent = useRef<string>('textSecondaryEvent')
+
+
+
+  const handleChangePrimaryValue = (text: string) => {
+    setPrimaryValueValue(text);
   };
 
-  const handlePress = () => {
-    setTitleText(value);
-    // Emitindo um evento quando o botão é pressionado
-    buttonEventEmitter.emit('onPress', null);
+  const handleChangeSecondaryValue = (text: string) => {
+    setSecondaryValue(text);
   };
 
-  // Assinando o evento emitido pelo módulo nativo
-  buttonEventEmitter.addListener('onPress', () => {
-    console.log('Botão pressionado');
-    // Aqui você pode adicionar a lógica desejada quando o botão é pressionado no lado nativo
-  });
+  const handlePress = (eventName: string) => {
+    Alert.alert(eventName)
+  };
+
+
+  useEffect(() => {
+    // Assinando o evento emitido pelo módulo nativo
+    const subscriptionPrimaryEvent = ActionEventEmitter.addListener(buttonPrimaryEvent.current, () => {
+      // Aqui você pode adicionar a lógica desejada quando o botão é pressionado no lado nativo
+      handlePress(buttonPrimaryEvent.current)
+    });
+
+    const subscriptionSecondaryEvent = ActionEventEmitter.addListener(buttonSecondaryEvent.current, () => {
+      handlePress(buttonSecondaryEvent.current)
+    });
+
+    const subscriptionPrimaryTextEvent = ActionEventEmitter.addListener(textPrimaryEvent.current, ({ text }) => {
+      handleChangePrimaryValue(text)
+    });
+
+    const subscriptionSecondaryTextEvent = ActionEventEmitter.addListener(textSecondaryEvent.current, ({ text }) => {
+      handleChangeSecondaryValue(text)
+    });
+
+    return () => {
+      subscriptionPrimaryEvent.remove()
+      subscriptionSecondaryEvent.remove()
+      subscriptionPrimaryTextEvent.remove()
+      subscriptionSecondaryTextEvent.remove()
+    }
+  }, [])
+
 
   return (
     <View style={styles.container}>
-      <MisticaTextInput
+
+      <TextInput
         style={{
           position: 'absolute',
           top: 100,
@@ -38,22 +73,63 @@ export default function App() {
           bottom: 0,
           width: '90%',
         }}
-        inputText={value}
-        onChangeText={handleChangeValue}
+        inputText={primaryValue}
+        eventName={textPrimaryEvent.current}
       />
 
       <Text
         style={{
           position: 'absolute',
-          left: 120,
+          fontSize: 15,
           top: 170,
-          fontSize: 20,
+          left: 40,
+          right: 0,
+          bottom: 0,
         }}
       >
-        {titleText}
+        {primaryValue && `Event receive in react native context ${textPrimaryEvent.current} - (${primaryValue})`}
       </Text>
 
-      <MisticaButton
+      <TextInput
+        style={{
+          position: 'absolute',
+          top: 230,
+          left: 15,
+          right: 0,
+          bottom: 0,
+          width: '90%',
+        }}
+        inputText={secondaryValue}
+        eventName={textSecondaryEvent.current}
+      />
+
+      <Text
+        style={{
+          position: 'absolute',
+          fontSize: 15,
+          top: 300,
+          left: 40,
+          right: 0,
+          bottom: 0,
+        }}
+      >
+        {secondaryValue && `Event receive in react native context ${textSecondaryEvent.current} - (${secondaryValue})`}
+      </Text>
+
+      <Button
+        style={{
+          width: 300,
+          height: 50,
+          position: 'absolute',
+          bottom: 20,
+          left: 35,
+          marginBottom: 60
+        }}
+        text="Primary"
+        eventName={buttonPrimaryEvent.current}
+      />
+
+      <Button
         style={{
           width: 300,
           height: 50,
@@ -61,9 +137,10 @@ export default function App() {
           bottom: 20,
           left: 35,
         }}
-        text="Meu Botão Mistica"
-        onPress={handlePress}
+        text="Secondary"
+        eventName={buttonSecondaryEvent.current}
       />
+
     </View>
   );
 }
