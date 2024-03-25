@@ -1,24 +1,16 @@
 import React, { useEffect, useRef, useState } from 'react';
 
 import { Alert, StyleSheet, Text, View } from 'react-native';
-import {
-  Button,
-  TextInput,
-  ActionEventEmitter,
-} from 'mistica-react-native';
-
-
+import { Button, TextInput, ActionEventEmitter } from 'mistica-react-native';
 
 export default function App() {
   const [primaryValue, setPrimaryValueValue] = useState('');
   const [secondaryValue, setSecondaryValue] = useState('');
 
-  const buttonPrimaryEvent = useRef<string>('buttonPrimaryEvent')
-  const buttonSecondaryEvent = useRef<string>('buttonSecondaryEvent')
-  const textPrimaryEvent = useRef<string>('textPrimaryEvent')
-  const textSecondaryEvent = useRef<string>('textSecondaryEvent')
-
-
+  const buttonPrimaryEvent = useRef<string>('buttonPrimaryEvent');
+  const buttonSecondaryEvent = useRef<string>('buttonSecondaryEvent');
+  const textPrimaryEvent = useRef<string>('textPrimaryEvent');
+  const textSecondaryEvent = useRef<string>('textSecondaryEvent');
 
   const handleChangePrimaryValue = (text: string) => {
     setPrimaryValueValue(text);
@@ -29,41 +21,50 @@ export default function App() {
   };
 
   const handlePress = (eventName: string) => {
-    Alert.alert(eventName)
+    Alert.alert(eventName);
   };
-
 
   useEffect(() => {
     // Assinando o evento emitido pelo módulo nativo
-    const subscriptionPrimaryEvent = ActionEventEmitter.addListener(buttonPrimaryEvent.current, () => {
-      // Aqui você pode adicionar a lógica desejada quando o botão é pressionado no lado nativo
-      handlePress(buttonPrimaryEvent.current)
-    });
+    const subscriptionPrimaryEvent = ActionEventEmitter.addListener(
+      buttonPrimaryEvent.current,
+      () => {
+        // Aqui você pode adicionar a lógica desejada quando o botão é pressionado no lado nativo
+        handlePress(buttonPrimaryEvent.current);
+      }
+    );
 
-    const subscriptionSecondaryEvent = ActionEventEmitter.addListener(buttonSecondaryEvent.current, () => {
-      handlePress(buttonSecondaryEvent.current)
-    });
+    const subscriptionSecondaryEvent = ActionEventEmitter.addListener(
+      buttonSecondaryEvent.current,
+      () => {
+        handlePress(buttonSecondaryEvent.current);
+      }
+    );
 
-    const subscriptionPrimaryTextEvent = ActionEventEmitter.addListener(textPrimaryEvent.current, ({ text }) => {
-      handleChangePrimaryValue(text)
-    });
+    const subscriptionPrimaryTextEvent = ActionEventEmitter.addListener(
+      textPrimaryEvent.current,
+      ({ text }) => {
+        handleChangePrimaryValue(text);
+      }
+    );
 
-    const subscriptionSecondaryTextEvent = ActionEventEmitter.addListener(textSecondaryEvent.current, ({ text }) => {
-      handleChangeSecondaryValue(text)
-    });
+    const subscriptionSecondaryTextEvent = ActionEventEmitter.addListener(
+      textSecondaryEvent.current,
+      ({ text }) => {
+        handleChangeSecondaryValue(text);
+      }
+    );
 
     return () => {
-      subscriptionPrimaryEvent.remove()
-      subscriptionSecondaryEvent.remove()
-      subscriptionPrimaryTextEvent.remove()
-      subscriptionSecondaryTextEvent.remove()
-    }
-  }, [])
-
+      subscriptionPrimaryEvent.remove();
+      subscriptionSecondaryEvent.remove();
+      subscriptionPrimaryTextEvent.remove();
+      subscriptionSecondaryTextEvent.remove();
+    };
+  }, []);
 
   return (
     <View style={styles.container}>
-
       <TextInput
         style={{
           position: 'absolute',
@@ -87,7 +88,8 @@ export default function App() {
           bottom: 0,
         }}
       >
-        {primaryValue && `Event receive in react native context ${textPrimaryEvent.current} - (${primaryValue})`}
+        {primaryValue &&
+          `Event receive in react native context ${textPrimaryEvent.current} - (${primaryValue})`}
       </Text>
 
       <TextInput
@@ -113,7 +115,8 @@ export default function App() {
           bottom: 0,
         }}
       >
-        {secondaryValue && `Event receive in react native context ${textSecondaryEvent.current} - (${secondaryValue})`}
+        {secondaryValue &&
+          `Event receive in react native context ${textSecondaryEvent.current} - (${secondaryValue})`}
       </Text>
 
       <Button
@@ -123,7 +126,7 @@ export default function App() {
           position: 'absolute',
           bottom: 20,
           left: 35,
-          marginBottom: 60
+          marginBottom: 60,
         }}
         text="Primary"
         eventName={buttonPrimaryEvent.current}
@@ -140,7 +143,6 @@ export default function App() {
         text="Secondary"
         eventName={buttonSecondaryEvent.current}
       />
-
     </View>
   );
 }

@@ -7,7 +7,6 @@ import {
   type TextInputProps,
   NativeModules,
   NativeEventEmitter,
-  DeviceEventEmitter
 } from 'react-native';
 
 const actionEventModule = NativeModules.ActionEventModule;
@@ -30,11 +29,11 @@ const LINKING_ERROR =
 interface MisticaButtonProps extends Omit<ViewProps, 'onPress'> {
   style: ViewStyle; // Propriedade customizada para estilos
   text?: string;
-  title?: string
+  title?: string;
   isLoading?: boolean;
   buttonStyle?: string;
   onPress?: () => void;
-  eventName?: string
+  eventName?: string;
 }
 
 const ButtonName = 'Button';
@@ -42,8 +41,8 @@ export const Button =
   UIManager.getViewManagerConfig(ButtonName) != null
     ? requireNativeComponent<MisticaButtonProps>(ButtonName)
     : () => {
-      throw new Error(LINKING_ERROR);
-    };
+        throw new Error(LINKING_ERROR);
+      };
 
 interface MisticaTextInputProps extends TextInputProps {
   style: ViewStyle; // Propriedade customizada para estilos
@@ -51,7 +50,7 @@ interface MisticaTextInputProps extends TextInputProps {
   inputCounterEnabled?: boolean;
   inputMaxLength?: number;
   inputAutofillEnabled?: boolean;
-  eventName?: string
+  eventName?: string;
 }
 
 const TextInputName = 'TextInput';
@@ -59,6 +58,5 @@ export const TextInput =
   UIManager.getViewManagerConfig(TextInputName) != null
     ? requireNativeComponent<MisticaTextInputProps>(TextInputName)
     : () => {
-      throw new Error(LINKING_ERROR);
-    };
-
+        throw new Error(LINKING_ERROR);
+      };
