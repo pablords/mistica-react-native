@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 
 import { Alert, StyleSheet, Text, View } from 'react-native';
-import { Button, TextInput, ActionEventEmitter } from 'mistica-react-native';
+import { Button } from 'mistica-react-native';
 
 export default function App() {
   const [primaryValue, setPrimaryValueValue] = useState('');
@@ -24,48 +24,48 @@ export default function App() {
     Alert.alert(eventName);
   };
 
-  useEffect(() => {
-    // Assinando o evento emitido pelo módulo nativo
-    const subscriptionPrimaryEvent = ActionEventEmitter.addListener(
-      buttonPrimaryEvent.current,
-      () => {
-        // Aqui você pode adicionar a lógica desejada quando o botão é pressionado no lado nativo
-        handlePress(buttonPrimaryEvent.current);
-      }
-    );
+  // useEffect(() => {
+  //   // Assinando o evento emitido pelo módulo nativo
+  //   const subscriptionPrimaryEvent = ActionEventEmitter.addListener(
+  //     buttonPrimaryEvent.current,
+  //     () => {
+  //       // Aqui você pode adicionar a lógica desejada quando o botão é pressionado no lado nativo
+  //       handlePress(buttonPrimaryEvent.current);
+  //     }
+  //   );
 
-    const subscriptionSecondaryEvent = ActionEventEmitter.addListener(
-      buttonSecondaryEvent.current,
-      () => {
-        handlePress(buttonSecondaryEvent.current);
-      }
-    );
+  //   const subscriptionSecondaryEvent = ActionEventEmitter.addListener(
+  //     buttonSecondaryEvent.current,
+  //     () => {
+  //       handlePress(buttonSecondaryEvent.current);
+  //     }
+  //   );
 
-    const subscriptionPrimaryTextEvent = ActionEventEmitter.addListener(
-      textPrimaryEvent.current,
-      ({ text }) => {
-        handleChangePrimaryValue(text);
-      }
-    );
+  //   const subscriptionPrimaryTextEvent = ActionEventEmitter.addListener(
+  //     textPrimaryEvent.current,
+  //     ({ text }) => {
+  //       handleChangePrimaryValue(text);
+  //     }
+  //   );
 
-    const subscriptionSecondaryTextEvent = ActionEventEmitter.addListener(
-      textSecondaryEvent.current,
-      ({ text }) => {
-        handleChangeSecondaryValue(text);
-      }
-    );
+  //   const subscriptionSecondaryTextEvent = ActionEventEmitter.addListener(
+  //     textSecondaryEvent.current,
+  //     ({ text }) => {
+  //       handleChangeSecondaryValue(text);
+  //     }
+  //   );
 
-    return () => {
-      subscriptionPrimaryEvent.remove();
-      subscriptionSecondaryEvent.remove();
-      subscriptionPrimaryTextEvent.remove();
-      subscriptionSecondaryTextEvent.remove();
-    };
-  }, []);
+  //   return () => {
+  //     subscriptionPrimaryEvent.remove();
+  //     subscriptionSecondaryEvent.remove();
+  //     subscriptionPrimaryTextEvent.remove();
+  //     subscriptionSecondaryTextEvent.remove();
+  //   };
+  // }, []);
 
   return (
     <View style={styles.container}>
-      <TextInput
+      {/* <TextInput
         style={{
           position: 'absolute',
           top: 100,
@@ -130,18 +130,20 @@ export default function App() {
         }}
         text="Primary"
         eventName={buttonPrimaryEvent.current}
-      />
+      /> */}
 
       <Button
-        style={{
-          width: 300,
-          height: 50,
-          position: 'absolute',
-          bottom: 20,
-          left: 35,
-        }}
-        text="Secondary"
-        eventName={buttonSecondaryEvent.current}
+        style={styles.box}
+        color="red"
+      // style={{
+      //   width: 300,
+      //   height: 50,
+      //   position: 'absolute',
+      //   bottom: 20,
+      //   left: 35,
+      // }}
+      // text="Secondary"
+      // eventName={buttonSecondaryEvent.current}
       />
     </View>
   );

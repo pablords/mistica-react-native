@@ -9,8 +9,8 @@ import {
   NativeEventEmitter,
 } from 'react-native';
 
-const actionEventModule = NativeModules.ActionEventModule;
-export const ActionEventEmitter = new NativeEventEmitter(actionEventModule);
+// const actionEventModule = NativeModules.ActionEventModule;
+// export const ActionEventEmitter = new NativeEventEmitter(actionEventModule);
 
 // // Chamar a função do módulo Kotlin e passar o nome do evento
 // DeviceEventEmitter.emit('handleEvent', 'customEvent');
@@ -34,6 +34,7 @@ interface MisticaButtonProps extends Omit<ViewProps, 'onPress'> {
   buttonStyle?: string;
   onPress?: () => void;
   eventName?: string;
+  color?: string
 }
 
 const ButtonName = 'Button';
