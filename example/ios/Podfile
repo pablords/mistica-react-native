@@ -1,7 +1,8 @@
 source "https://github.com/material-components/material-components-ios.git"
 source 'https://github.com/CocoaPods/Specs.git'
 
-plugin "cocoapods-spm"
+# Plugin que converte SPM em Cocoapds
+# plugin "cocoapods-spm"
 
 # Resolve react_native_pods.rb with node to allow for hoisting
 require Pod::Executable.execute_command('node', ['-p',
@@ -15,11 +16,11 @@ require Pod::Executable.execute_command('node', ['-p',
 platform :ios, min_ios_version_supported
 prepare_react_native_project!
 
-
-config_cocoapods_spm(
-  dont_prebuild_macros: true,
-  default_macro_config: "debug"
-)
+# Plugin que converte SPM em Cocoapds
+# config_cocoapods_spm(
+#   dont_prebuild_macros: true,
+#   default_macro_config: "debug"
+# )
 
 
 # If you are using a `react-native-flipper` your iOS build will fail when `NO_FLIPPER=1` is set.
