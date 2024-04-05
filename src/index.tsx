@@ -9,15 +9,13 @@ import {
   NativeEventEmitter,
 } from 'react-native';
 
+let actionEventModule;
+let ActionEventEmitter: NativeEventEmitter;
 
-let actionEventModule
-let ActionEventEmitter: NativeEventEmitter
-
-if (Platform.OS === "android") {
+if (Platform.OS === 'android') {
   actionEventModule = NativeModules.ActionEventModule;
   ActionEventEmitter = new NativeEventEmitter(actionEventModule);
 }
-
 
 const LINKING_ERROR =
   `The package 'mistica-react-native' doesn't seem to be linked. Make sure: \n\n` +
@@ -33,18 +31,17 @@ interface MisticaButtonProps extends Omit<ViewProps, 'onPress'> {
   buttonStyle?: string;
   onPress?: () => void;
   eventName?: string;
-  color?: string
+  color?: string;
 }
 
-
-let Button: any
+let Button: any;
 const ButtonName = 'Button';
 Button =
   UIManager.getViewManagerConfig(ButtonName) != null
     ? requireNativeComponent<MisticaButtonProps>(ButtonName)
     : () => {
-      throw new Error(LINKING_ERROR);
-    };
+        throw new Error(LINKING_ERROR);
+      };
 
 interface MisticaTextInputProps extends TextInputProps {
   style: ViewStyle; // Propriedade customizada para estilos
@@ -56,22 +53,12 @@ interface MisticaTextInputProps extends TextInputProps {
 }
 
 const TextInputName = 'TextInput';
-let TextInput: any
+let TextInput: any;
 TextInput =
   UIManager.getViewManagerConfig(TextInputName) != null
     ? requireNativeComponent<MisticaTextInputProps>(TextInputName)
     : () => {
-      throw new Error(LINKING_ERROR);
-    };
+        throw new Error(LINKING_ERROR);
+      };
 
-
-
-
-export {
-  ActionEventEmitter,
-  actionEventModule,
-  TextInput,
-  Button
-}
-
-
+export { ActionEventEmitter, actionEventModule, TextInput, Button };

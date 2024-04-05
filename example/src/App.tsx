@@ -98,7 +98,7 @@ export default function App() {
           left: 15,
           right: 0,
           bottom: 0,
-          width: '90%'
+          width: '90%',
         }}
         eventName={textSecondaryEvent.current}
       />
@@ -129,7 +129,6 @@ export default function App() {
         text="Primary"
         eventName={buttonPrimaryEvent.current}
       />
-
     </View>
   );
 }
@@ -141,12 +140,12 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   box: {
-    width: "90%",
+    width: '90%',
     height: 60,
     marginVertical: 20,
-    position: "absolute",
+    position: 'absolute',
     bottom: 10,
     borderRadius: 10,
-    backgroundColor: "blue"
+    backgroundColor: 'blue',
   },
 });
