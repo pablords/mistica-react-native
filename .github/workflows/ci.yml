@@ -151,5 +151,5 @@ jobs:
 
       - name: Build example for iOS
         run: |
-          Run sudo ls -1 /Applications | grep "Xcode"
+          sudo ls -1 /Applications | grep "Xcode"
           yarn turbo run build:ios --cache-dir="${{ env.TURBO_CACHE_DIR }}"
