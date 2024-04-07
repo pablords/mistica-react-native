@@ -7,7 +7,7 @@ import {
 import { LINKING_ERROR } from '../utils/errors';
 
 interface MisticaButtonProps extends Omit<ViewProps, 'onPress'> {
-  style: ViewStyle; // Propriedade customizada para estilos
+  style?: ViewStyle; // Propriedade customizada para estilos
   text?: string;
   title?: string;
   isLoading?: boolean;
@@ -17,9 +17,9 @@ interface MisticaButtonProps extends Omit<ViewProps, 'onPress'> {
   color?: string;
 }
 
-let Button: any;
-const ButtonName = 'Button';
-Button =
+
+const ButtonName = 'MisticaButton';
+const Button =
   UIManager.getViewManagerConfig(ButtonName) != null
     ? requireNativeComponent<MisticaButtonProps>(ButtonName)
     : () => {

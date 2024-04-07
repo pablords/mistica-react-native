@@ -1,5 +1,5 @@
-source "https://github.com/material-components/material-components-ios.git"
-source 'https://github.com/CocoaPods/Specs.git'
+# source "https://github.com/material-components/material-components-ios.git"
+# source 'https://github.com/CocoaPods/Specs.git'
 
 # Plugin que converte SPM em Cocoapds
 # plugin "cocoapods-spm"
@@ -52,15 +52,24 @@ target 'MisticaReactNativeExample' do
 
   # use_modular_headers!
 
-  # pod 'Mistica', :path => '/Users/pablosantos/pocs/mistica-ios'
-  # spm_pkg "Mistica", :url => "https://github.com/Telefonica/mistica-ios.git", :tag => "29.6.3"
-  # spm_pkg "SDWebImage", :url => "https://github.com/SDWebImage/SDWebImage.git", :branch => "master"
-  # spm_pkg "SDWebImageSVGCoder", :url => "https://github.com/SDWebImage/SDWebImageSVGCoder.git", :branch => "master"
-  pod 'MaterialComponents/Buttons', '~> 124.2.0', :modular_headers => true
-  pod 'MaterialComponents/TextControls+FilledTextAreas', '~> 124.2.0', :modular_headers => true
-  pod 'MaterialComponents/TextControls+FilledTextFields', '~> 124.2.0', :modular_headers => true
-  pod 'MaterialComponents/TextControls+OutlinedTextAreas', '~> 124.2.0', :modular_headers => true
-  pod 'MaterialComponents/TextControls+OutlinedTextFields', '~> 124.2.0', :modular_headers => true
+  pod 'Mistica', :path => '/Users/pablosantos/pocs/mistica-ios', :branch => "podspec-support"
+  pod 'SDWebImage', :modular_headers => true
+  pod 'SDWebImageSVGCoder', :modular_headers => true
+
+  # spm_pkg "Mistica", :url => "https://github.com/Telefonica/mistica-ios.git", 
+  #         :tag => "29.7.3"
+  #         # :products => ["Mistica", "MisticaCommon", "MisticaSwiftUI"]
+  # spm_pkg "SDWebImage", :url => "https://github.com/SDWebImage/SDWebImage.git", :tag => "5.19.1"
+  # spm_pkg "SDWebImageSVGCoder", :url => "https://github.com/SDWebImage/SDWebImageSVGCoder.git", :tag => "1.7.0"
+  # spm_pkg "Lottie", :url => "https://github.com/airbnb/lottie-ios.git", :tag => "4.4.1"
+  # spm_pkg "SnapshotTesting", :url => "https://github.com/pointfreeco/swift-snapshot-testing.git", :tag => "1.8.2"
+
+
+  # pod 'MaterialComponents/Buttons', '~> 124.2.0', :modular_headers => true
+  # pod 'MaterialComponents/TextControls+FilledTextAreas', '~> 124.2.0', :modular_headers => true
+  # pod 'MaterialComponents/TextControls+FilledTextFields', '~> 124.2.0', :modular_headers => true
+  # pod 'MaterialComponents/TextControls+OutlinedTextAreas', '~> 124.2.0', :modular_headers => true
+  # pod 'MaterialComponents/TextControls+OutlinedTextFields', '~> 124.2.0', :modular_headers => true
 
 
   use_react_native!(

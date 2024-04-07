@@ -35,12 +35,12 @@ Esses passos garantirão que o seu aplicativo iOS seja reconstruído com as depe
 
 
 
-### Carthage
 
-carthage update --platform iOS --use-ssh --use-xcframeworks
+### Multiple commands produce error in Xcode 13
+https://stackoverflow.com/questions/71004189/multiple-commands-produce-error-in-xcode-13 
 
-rm -rf ~/Library/Caches/org.carthage.CarthageKit
-
+### dyld: Library not loaded: @rpath/XCTest.framework/XCTest
+https://stackoverflow.com/questions/51041666/dyld-library-not-loaded-rpath-xctest-framework-xctest
 
 
 ### Instaladno plugins Gem

@@ -8,12 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		00E356F31AD99517003FC87E /* MisticaReactNativeExampleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* MisticaReactNativeExampleTests.m */; };
-		03BA36E04ECAE7275F00E0CC /* libPods-MisticaReactNativeExample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F015A5224E6892C8DE356B6 /* libPods-MisticaReactNativeExample.a */; };
 		13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.mm */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
-		B8443F0D2A3EFC0FA7926612 /* libPods-MisticaReactNativeExample-MisticaReactNativeExampleTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BDDB2E19CAF9F5ADCD4DCCD6 /* libPods-MisticaReactNativeExample-MisticaReactNativeExampleTests.a */; };
+		B8060EA22BC2ED6B006BA607 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8060EA12BC2ED6B006BA607 /* XCTest.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		B8060EA62BC2EF04006BA607 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8060EA12BC2ED6B006BA607 /* XCTest.framework */; platformFilter = ios; };
+		BFCBDD110A17C2AAAE1032EB /* libPods-MisticaReactNativeExample-MisticaReactNativeExampleTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BCBD4F15EE075435D33A7FF0 /* libPods-MisticaReactNativeExample-MisticaReactNativeExampleTests.a */; settings = {ATTRIBUTES = (Weak, ); }; };
+		DE587BDAF70E0D381C2472B7 /* libPods-MisticaReactNativeExample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E7710A51BE39E8F50589DB59 /* libPods-MisticaReactNativeExample.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -30,7 +32,6 @@
 		00E356EE1AD99517003FC87E /* MisticaReactNativeExampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MisticaReactNativeExampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* MisticaReactNativeExampleTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MisticaReactNativeExampleTests.m; sourceTree = "<group>"; };
-		0F015A5224E6892C8DE356B6 /* libPods-MisticaReactNativeExample.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MisticaReactNativeExample.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07F961A680F5B00A75B9A /* MisticaReactNativeExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MisticaReactNativeExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = MisticaReactNativeExample/AppDelegate.h; sourceTree = "<group>"; };
 		13B07FB01A68108700A75B9A /* AppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = AppDelegate.mm; path = MisticaReactNativeExample/AppDelegate.mm; sourceTree = "<group>"; };
@@ -42,7 +43,9 @@
 		5B7EB9410499542E8C5724F5 /* Pods-MisticaReactNativeExample-MisticaReactNativeExampleTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MisticaReactNativeExample-MisticaReactNativeExampleTests.debug.xcconfig"; path = "Target Support Files/Pods-MisticaReactNativeExample-MisticaReactNativeExampleTests/Pods-MisticaReactNativeExample-MisticaReactNativeExampleTests.debug.xcconfig"; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = MisticaReactNativeExample/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		89C6BE57DB24E9ADA2F236DE /* Pods-MisticaReactNativeExample-MisticaReactNativeExampleTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MisticaReactNativeExample-MisticaReactNativeExampleTests.release.xcconfig"; path = "Target Support Files/Pods-MisticaReactNativeExample-MisticaReactNativeExampleTests/Pods-MisticaReactNativeExample-MisticaReactNativeExampleTests.release.xcconfig"; sourceTree = "<group>"; };
-		BDDB2E19CAF9F5ADCD4DCCD6 /* libPods-MisticaReactNativeExample-MisticaReactNativeExampleTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MisticaReactNativeExample-MisticaReactNativeExampleTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B8060EA12BC2ED6B006BA607 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Platforms/iPhoneOS.platform/Developer/Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		BCBD4F15EE075435D33A7FF0 /* libPods-MisticaReactNativeExample-MisticaReactNativeExampleTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MisticaReactNativeExample-MisticaReactNativeExampleTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E7710A51BE39E8F50589DB59 /* libPods-MisticaReactNativeExample.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MisticaReactNativeExample.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -51,7 +54,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B8443F0D2A3EFC0FA7926612 /* libPods-MisticaReactNativeExample-MisticaReactNativeExampleTests.a in Frameworks */,
+				B8060EA62BC2EF04006BA607 /* XCTest.framework in Frameworks */,
+				BFCBDD110A17C2AAAE1032EB /* libPods-MisticaReactNativeExample-MisticaReactNativeExampleTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -59,7 +63,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				03BA36E04ECAE7275F00E0CC /* libPods-MisticaReactNativeExample.a in Frameworks */,
+				B8060EA22BC2ED6B006BA607 /* XCTest.framework in Frameworks */,
+				DE587BDAF70E0D381C2472B7 /* libPods-MisticaReactNativeExample.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -99,9 +104,10 @@
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B8060EA12BC2ED6B006BA607 /* XCTest.framework */,
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
-				0F015A5224E6892C8DE356B6 /* libPods-MisticaReactNativeExample.a */,
-				BDDB2E19CAF9F5ADCD4DCCD6 /* libPods-MisticaReactNativeExample-MisticaReactNativeExampleTests.a */,
+				E7710A51BE39E8F50589DB59 /* libPods-MisticaReactNativeExample.a */,
+				BCBD4F15EE075435D33A7FF0 /* libPods-MisticaReactNativeExample-MisticaReactNativeExampleTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -160,7 +166,7 @@
 				00E356EB1AD99517003FC87E /* Frameworks */,
 				00E356EC1AD99517003FC87E /* Resources */,
 				C59DA0FBD6956966B86A3779 /* [CP] Embed Pods Frameworks */,
-				F6A41C54EA430FDDC6A6ED99 /* [CP] Copy Pods Resources */,
+				2334ACEFB6C9766E1AE11A43 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -182,7 +188,7 @@
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
 				00EEFC60759A1932668264C0 /* [CP] Embed Pods Frameworks */,
-				E235C05ADACE081382539298 /* [CP] Copy Pods Resources */,
+				8CFC53C6B33E659F36C5E45E /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -268,7 +274,7 @@
 		};
 		00EEFC60759A1932668264C0 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
+			buildActionMask = 12;
 			files = (
 			);
 			inputFileListPaths = (
@@ -281,6 +287,40 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MisticaReactNativeExample/Pods-MisticaReactNativeExample-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		2334ACEFB6C9766E1AE11A43 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 12;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MisticaReactNativeExample-MisticaReactNativeExampleTests/Pods-MisticaReactNativeExample-MisticaReactNativeExampleTests-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MisticaReactNativeExample-MisticaReactNativeExampleTests/Pods-MisticaReactNativeExample-MisticaReactNativeExampleTests-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MisticaReactNativeExample-MisticaReactNativeExampleTests/Pods-MisticaReactNativeExample-MisticaReactNativeExampleTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8CFC53C6B33E659F36C5E45E /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 8;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MisticaReactNativeExample/Pods-MisticaReactNativeExample-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MisticaReactNativeExample/Pods-MisticaReactNativeExample-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MisticaReactNativeExample/Pods-MisticaReactNativeExample-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		A55EABD7B0C7F3A422A6CC61 /* [CP] Check Pods Manifest.lock */ = {
@@ -342,40 +382,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MisticaReactNativeExample-MisticaReactNativeExampleTests/Pods-MisticaReactNativeExample-MisticaReactNativeExampleTests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		E235C05ADACE081382539298 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-MisticaReactNativeExample/Pods-MisticaReactNativeExample-resources-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-MisticaReactNativeExample/Pods-MisticaReactNativeExample-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MisticaReactNativeExample/Pods-MisticaReactNativeExample-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		F6A41C54EA430FDDC6A6ED99 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-MisticaReactNativeExample-MisticaReactNativeExampleTests/Pods-MisticaReactNativeExample-MisticaReactNativeExampleTests-resources-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-MisticaReactNativeExample-MisticaReactNativeExampleTests/Pods-MisticaReactNativeExample-MisticaReactNativeExampleTests-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MisticaReactNativeExample-MisticaReactNativeExampleTests/Pods-MisticaReactNativeExample-MisticaReactNativeExampleTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */

@@ -15,116 +15,14 @@ PODS:
     - hermes-engine/Pre-built (= 0.73.6)
   - hermes-engine/Pre-built (0.73.6)
   - libevent (2.1.12)
-  - MaterialComponents/AnimationTiming (124.2.0)
-  - MaterialComponents/Availability (124.2.0)
-  - MaterialComponents/Buttons (124.2.0):
-    - MaterialComponents/Elevation
-    - MaterialComponents/Ink
-    - MaterialComponents/private/Math
-    - MaterialComponents/Ripple
-    - MaterialComponents/Shadow
-    - MaterialComponents/ShadowElevations
-    - MaterialComponents/ShadowLayer
-    - MaterialComponents/ShapeLibrary
-    - MaterialComponents/Shapes
-    - MaterialComponents/Typography
-    - MDFInternationalization
-    - MDFTextAccessibility
-  - MaterialComponents/Elevation (124.2.0):
-    - MaterialComponents/Availability
-    - MaterialComponents/private/Color
-    - MaterialComponents/private/Math
-  - MaterialComponents/Ink (124.2.0):
-    - MaterialComponents/Availability
-    - MaterialComponents/private/Color
-    - MaterialComponents/private/Math
-  - MaterialComponents/private/Application (124.2.0)
-  - MaterialComponents/private/Color (124.2.0):
-    - MaterialComponents/Availability
-  - MaterialComponents/private/Math (124.2.0)
-  - "MaterialComponents/private/TextControlsPrivate+BaseStyle (124.2.0)":
-    - MaterialComponents/AnimationTiming
-    - MaterialComponents/private/Math
-    - "MaterialComponents/private/TextControlsPrivate+Shared"
-  - "MaterialComponents/private/TextControlsPrivate+FilledStyle (124.2.0)":
-    - MaterialComponents/AnimationTiming
-    - MaterialComponents/Availability
-    - MaterialComponents/private/Math
-    - "MaterialComponents/private/TextControlsPrivate+Shared"
-    - "MaterialComponents/private/TextControlsPrivate+UnderlinedStyle"
-  - "MaterialComponents/private/TextControlsPrivate+OutlinedStyle (124.2.0)":
-    - MaterialComponents/AnimationTiming
-    - MaterialComponents/Availability
-    - MaterialComponents/private/Math
-    - "MaterialComponents/private/TextControlsPrivate+Shared"
-  - "MaterialComponents/private/TextControlsPrivate+Shared (124.2.0)":
-    - MaterialComponents/AnimationTiming
-    - MaterialComponents/private/Math
-    - "MaterialComponents/TextControls+Enums"
-  - "MaterialComponents/private/TextControlsPrivate+TextFields (124.2.0)":
-    - MaterialComponents/private/Math
-    - "MaterialComponents/private/TextControlsPrivate+Shared"
-  - "MaterialComponents/private/TextControlsPrivate+UnderlinedStyle (124.2.0)":
-    - MaterialComponents/AnimationTiming
-    - MaterialComponents/Availability
-    - MaterialComponents/private/Math
-    - "MaterialComponents/private/TextControlsPrivate+Shared"
-  - MaterialComponents/Ripple (124.2.0):
-    - MaterialComponents/AnimationTiming
-    - MaterialComponents/Availability
-    - MaterialComponents/private/Color
-    - MaterialComponents/private/Math
-  - MaterialComponents/Shadow (124.2.0):
-    - MaterialComponents/Availability
-  - MaterialComponents/ShadowElevations (124.2.0)
-  - MaterialComponents/ShadowLayer (124.2.0):
-    - MaterialComponents/ShadowElevations
-  - MaterialComponents/ShapeLibrary (124.2.0):
-    - MaterialComponents/private/Math
-    - MaterialComponents/Shapes
-  - MaterialComponents/Shapes (124.2.0):
-    - MaterialComponents/private/Color
-    - MaterialComponents/private/Math
-    - MaterialComponents/ShadowLayer
-  - "MaterialComponents/TextControls+BaseTextAreas (124.2.0)":
-    - "MaterialComponents/private/TextControlsPrivate+BaseStyle"
-    - "MaterialComponents/private/TextControlsPrivate+Shared"
-    - MDFInternationalization
-  - "MaterialComponents/TextControls+BaseTextFields (124.2.0)":
-    - "MaterialComponents/private/TextControlsPrivate+BaseStyle"
-    - "MaterialComponents/private/TextControlsPrivate+Shared"
-    - "MaterialComponents/private/TextControlsPrivate+TextFields"
-    - MDFInternationalization
-  - "MaterialComponents/TextControls+Enums (124.2.0)"
-  - "MaterialComponents/TextControls+FilledTextAreas (124.2.0)":
-    - MaterialComponents/Availability
-    - "MaterialComponents/private/TextControlsPrivate+FilledStyle"
-    - "MaterialComponents/TextControls+BaseTextAreas"
-  - "MaterialComponents/TextControls+FilledTextFields (124.2.0)":
-    - MaterialComponents/Availability
-    - "MaterialComponents/private/TextControlsPrivate+FilledStyle"
-    - "MaterialComponents/TextControls+BaseTextFields"
-  - "MaterialComponents/TextControls+OutlinedTextAreas (124.2.0)":
-    - MaterialComponents/Availability
-    - "MaterialComponents/private/TextControlsPrivate+OutlinedStyle"
-    - "MaterialComponents/TextControls+BaseTextAreas"
-  - "MaterialComponents/TextControls+OutlinedTextFields (124.2.0)":
-    - MaterialComponents/Availability
-    - "MaterialComponents/private/TextControlsPrivate+OutlinedStyle"
-    - "MaterialComponents/TextControls+BaseTextFields"
-  - MaterialComponents/Typography (124.2.0):
-    - MaterialComponents/private/Application
-    - MaterialComponents/private/Math
-    - MDFTextAccessibility
-  - MDFInternationalization (3.0.0)
-  - MDFTextAccessibility (2.0.1)
+  - lottie-ios (4.4.1)
+  - Mistica (29.7.3):
+    - lottie-ios (= 4.4.1)
+    - SDWebImage (= 5.19.1)
+    - SDWebImageSVGCoder (= 1.7.0)
   - mistica-react-native (0.1.0):
     - glog
-    - MaterialComponents/Buttons
-    - "MaterialComponents/TextControls+FilledTextAreas"
-    - "MaterialComponents/TextControls+FilledTextFields"
-    - "MaterialComponents/TextControls+OutlinedTextAreas"
-    - "MaterialComponents/TextControls+OutlinedTextFields"
+    - Mistica
     - RCT-Folly (= 2022.05.16.00)
     - React-Core
   - RCT-Folly (2022.05.16.00):
@@ -1165,6 +1063,11 @@ PODS:
     - React-jsi (= 0.73.6)
     - React-logger (= 0.73.6)
     - React-perflogger (= 0.73.6)
+  - SDWebImage (5.19.1):
+    - SDWebImage/Core (= 5.19.1)
+  - SDWebImage/Core (5.19.1)
+  - SDWebImageSVGCoder (1.7.0):
+    - SDWebImage/Core (~> 5.6)
   - SocketRocket (0.6.1)
   - Yoga (1.14.0)
 
@@ -1176,11 +1079,7 @@ DEPENDENCIES:
   - glog (from `../node_modules/react-native/third-party-podspecs/glog.podspec`)
   - hermes-engine (from `../node_modules/react-native/sdks/hermes-engine/hermes-engine.podspec`)
   - libevent (~> 2.1.12)
-  - MaterialComponents/Buttons (~> 124.2.0)
-  - "MaterialComponents/TextControls+FilledTextAreas (~> 124.2.0)"
-  - "MaterialComponents/TextControls+FilledTextFields (~> 124.2.0)"
-  - "MaterialComponents/TextControls+OutlinedTextAreas (~> 124.2.0)"
-  - "MaterialComponents/TextControls+OutlinedTextFields (~> 124.2.0)"
+  - Mistica (from `/Users/pablosantos/pocs/mistica-ios`)
   - mistica-react-native (from `../..`)
   - RCT-Folly (from `../node_modules/react-native/third-party-podspecs/RCT-Folly.podspec`)
   - RCT-Folly/Fabric (from `../node_modules/react-native/third-party-podspecs/RCT-Folly.podspec`)
@@ -1225,15 +1124,17 @@ DEPENDENCIES:
   - React-runtimescheduler (from `../node_modules/react-native/ReactCommon/react/renderer/runtimescheduler`)
   - React-utils (from `../node_modules/react-native/ReactCommon/react/utils`)
   - ReactCommon/turbomodule/core (from `../node_modules/react-native/ReactCommon`)
+  - SDWebImage
+  - SDWebImageSVGCoder
   - Yoga (from `../node_modules/react-native/ReactCommon/yoga`)
 
 SPEC REPOS:
-  https://github.com/CocoaPods/Specs.git:
+  trunk:
     - fmt
     - libevent
-    - MaterialComponents
-    - MDFInternationalization
-    - MDFTextAccessibility
+    - lottie-ios
+    - SDWebImage
+    - SDWebImageSVGCoder
     - SocketRocket
 
 EXTERNAL SOURCES:
@@ -1250,6 +1151,9 @@ EXTERNAL SOURCES:
   hermes-engine:
     :podspec: "../node_modules/react-native/sdks/hermes-engine/hermes-engine.podspec"
     :tag: hermes-2024-02-20-RNv0.73.5-18f99ace4213052c5e7cdbcd39ee9766cd5df7e4
+  Mistica:
+    :branch: podspec-support
+    :path: "/Users/pablosantos/pocs/mistica-ios"
   mistica-react-native:
     :path: "../.."
   RCT-Folly:
@@ -1346,10 +1250,9 @@ SPEC CHECKSUMS:
   glog: c5d68082e772fa1c511173d6b30a9de2c05a69a2
   hermes-engine: 9cecf9953a681df7556b8cc9c74905de8f3293c0
   libevent: 4049cae6c81cdb3654a443be001fb9bdceff7913
-  MaterialComponents: 1a9b2d9d45b1601ae544de85089adc4c464306d4
-  MDFInternationalization: d697c55307816222a55685c4ccb1044ffb030c12
-  MDFTextAccessibility: f4bb4cc2194286651b59a215fdeaa0e05dc90ba5
-  mistica-react-native: f2f354458d70bf186d1e2fee022ece23caa1fbb8
+  lottie-ios: e047b1d2e6239b787cc5e9755b988869cf190494
+  Mistica: 54f029e722f049c30ad1e342ca4fc0910c00f552
+  mistica-react-native: 10dcf8f65463b1b65c39d9c65ce35f9c1c6e14b6
   RCT-Folly: 7169b2b1c44399c76a47b5deaaba715eeeb476c0
   RCTRequired: ca1d7414aba0b27efcfa2ccd37637edb1ab77d96
   RCTTypeSafety: 678e344fb976ff98343ca61dc62e151f3a042292
@@ -1391,9 +1294,11 @@ SPEC CHECKSUMS:
   React-runtimescheduler: 9636eee762c699ca7c85751a359101797e4c8b3b
   React-utils: d16c1d2251c088ad817996621947d0ac8167b46c
   ReactCommon: 2aa35648354bd4c4665b9a5084a7d37097b89c10
+  SDWebImage: 40b0b4053e36c660a764958bff99eed16610acbb
+  SDWebImageSVGCoder: 15a300a97ec1c8ac958f009c02220ac0402e936c
   SocketRocket: f32cd54efbe0f095c4d7594881e52619cfe80b17
   Yoga: 805bf71192903b20fc14babe48080582fee65a80
 
-PODFILE CHECKSUM: 23fd8b262b9ba3ca7037170f9e8bc5d136851607
+PODFILE CHECKSUM: e4b5def459ee77934d7b02444bb23c63a84621f2
 
 COCOAPODS: 1.15.2

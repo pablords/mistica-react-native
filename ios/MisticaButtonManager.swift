@@ -1,13 +1,16 @@
 import Foundation
 import UIKit
-import MaterialComponents.MaterialButtons
+import Mistica
+import os.log
 
 
-@objc(ButtonManager)
+private let log = OSLog(subsystem: Bundle.main.bundleIdentifier!, category: "MisticaButtonManager")
+
+@objc(MisticaButtonManager)
 class ButtonManager: RCTViewManager {
 
-  override func view() -> (Button) {
-    return Button()
+  override func view() -> (MisticaButton) {
+    return MisticaButton()
   }
 
   @objc override static func requiresMainQueueSetup() -> Bool {
@@ -18,9 +21,10 @@ class ButtonManager: RCTViewManager {
 
 
 
-class Button: UIView {
+class MisticaButton: UIView {
     
-    var button: MDCButton!
+    var button: Button!
+    
     
     var title: String? {
         didSet {
@@ -28,18 +32,17 @@ class Button: UIView {
             guard let button = button else {
                 return
             }
-            button.setTitle(title, for: .normal)
+          button.title = "Teste"
         }
     }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
+        os_log("Criando MisticaButton", log: log, type: .info)
+        MisticaConfig.brandStyle = .vivo
         // Inicializa o botão
-        button = MDCButton()
-        let blueColor = UIColor.blue
-        button.setBackgroundColor(blueColor)
-        button.setTitle("TESTE", for: .normal)
+        button = Button()
+        button.title = "Teste"
         button.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
         
         // Adiciona o botão à visualização
@@ -69,5 +72,6 @@ class Button: UIView {
     @objc var onPress: RCTBubblingEventBlock?
     
 }
+
 
 

@@ -1,7 +1,7 @@
 
 #import <React/RCTViewManager.h>
 
-@interface RCT_EXTERN_MODULE(TextInputManager, RCTViewManager)
+@interface RCT_EXTERN_MODULE(MisticaTextInputManager, RCTViewManager)
 
 // Propriedade title que pode ser definida no JavaScript
 //RCT_EXPORT_VIEW_PROPERTY(title, NSString)
