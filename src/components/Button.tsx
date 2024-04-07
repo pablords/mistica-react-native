@@ -17,7 +17,6 @@ interface MisticaButtonProps extends Omit<ViewProps, 'onPress'> {
   color?: string;
 }
 
-
 const ButtonName = 'MisticaButton';
 const Button =
   UIManager.getViewManagerConfig(ButtonName) != null

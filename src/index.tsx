@@ -11,5 +11,4 @@ if (Platform.OS === 'android') {
   ActionEventEmitter = new NativeEventEmitter(actionEventModule);
 }
 
-
 export { ActionEventEmitter, actionEventModule, TextInput, Button };

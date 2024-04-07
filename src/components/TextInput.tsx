@@ -6,8 +6,6 @@ import {
 } from 'react-native';
 import { LINKING_ERROR } from '../utils/errors';
 
-
-
 interface MisticaTextInputProps extends TextInputProps {
   style?: ViewStyle; // Propriedade customizada para estilos
   inputText?: string;
@@ -23,7 +21,7 @@ const TextInput =
   UIManager.getViewManagerConfig(TextInputName) != null
     ? requireNativeComponent<MisticaTextInputProps>(TextInputName)
     : () => {
-      throw new Error(LINKING_ERROR);
-    };
+        throw new Error(LINKING_ERROR);
+      };
 
 export { TextInput };

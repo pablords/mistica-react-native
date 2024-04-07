@@ -72,7 +72,7 @@ export default function App() {
           left: 15,
           right: 0,
           bottom: 0,
-          width: '90%'
+          width: '90%',
         }}
         eventName={textPrimaryEvent.current}
       />
@@ -98,7 +98,7 @@ export default function App() {
           left: 15,
           right: 0,
           bottom: 0,
-          width: '90%'
+          width: '90%',
         }}
         eventName={textSecondaryEvent.current}
       />
