@@ -1,0 +1,42 @@
+{
+  "originHash" : "e63696ad7e00559ed84a5f230b948d79d67fd636df97e2542904d6bc115113ad",
+  "pins" : [
+    {
+      "identity" : "lottie-ios",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/airbnb/lottie-ios.git",
+      "state" : {
+        "revision" : "4e5877425dae5c10792fc9d22d53dc6bf6824dc1",
+        "version" : "3.1.8"
+      }
+    },
+    {
+      "identity" : "mistica-ios",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/Telefonica/mistica-ios.git",
+      "state" : {
+        "revision" : "38fc29ebd20de640eab4fefd201b06926aeffb40",
+        "version" : "29.6.3"
+      }
+    },
+    {
+      "identity" : "sdwebimage",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/SDWebImage/SDWebImage.git",
+      "state" : {
+        "revision" : "633996a807442ec28df9d33b0f88ce57a0e2fdbf",
+        "version" : "5.17.0"
+      }
+    },
+    {
+      "identity" : "sdwebimagesvgcoder",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/SDWebImage/SDWebImageSVGCoder.git",
+      "state" : {
+        "revision" : "950167445ab703740569869c8b7510efc9d09a26",
+        "version" : "1.7.0"
+      }
+    }
+  ],
+  "version" : 3
+}
