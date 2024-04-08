@@ -64,9 +64,16 @@ class MisticaButton: UIView {
         print("Button pressed")
         // Chame a função de callback onPress se ela estiver definida
         if let onPress = onPress {
-            onPress([:]) // Você pode passar dados para o JavaScript se necessário
+            os_log("Botão Pressionado", log: log, type: .info)
+//            let actionEventModule = ActionEventModule()
+//            actionEventModule.sendEvent(eventName: "onPress")
+              // Você pode passar dados para o JavaScript se necessário
+            ActionEventModuleManager.emmiter.sendEvent(withName: "onPress", body: ["TESTE BOTAO"])
+            onPress([:])
         }
+
     }
+    
     
     // Função de callback onPress que pode ser definida no JavaScript
     @objc var onPress: RCTBubblingEventBlock?

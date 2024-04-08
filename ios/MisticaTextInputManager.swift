@@ -26,6 +26,7 @@ class MisticaTextInput: UIView {
     
     var textField: InputField!
     
+    
     var placeholderText: String? {
         didSet {
             // Verifica se o botão já foi inicializado antes de configurar o título
@@ -57,6 +58,18 @@ class MisticaTextInput: UIView {
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    
+    @objc func textFieldDidChange(_ textField: UITextField) {
+        // Enviar o texto digitado para o ActionEventModule
+        guard let text = textField.text else {
+            return
+        }
+        
+        print("TESTE", text)
+        os_log("Text %@", log: log, type: .info, text)
+        ActionEventModuleManager.emmiter.sendEvent(withName: "onChange", body: [text])
     }
     
 

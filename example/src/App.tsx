@@ -1,7 +1,12 @@
 import React, { useEffect, useRef, useState } from 'react';
 
 import { Alert, StyleSheet, Text, View } from 'react-native';
-import { ActionEventEmitter, Button, TextInput } from 'mistica-react-native';
+import {
+  ActionEventEmitter,
+  CustomMethods,
+  Button,
+  TextInput,
+} from 'mistica-react-native';
 
 export default function App() {
   const [primaryValue, setPrimaryValueValue] = useState('');
@@ -54,12 +59,28 @@ export default function App() {
         handleChangeSecondaryValue(text);
       }
     );
+    CustomMethods.handlePress('TESTANDO EVENTO');
+
+    const subscription = ActionEventEmitter?.addListener('onPress', (event) => {
+      console.log('Botao apertado:', event);
+      // Faça o que precisar com o texto digitado
+    });
+
+    const subscriptionText = ActionEventEmitter?.addListener(
+      'onChange',
+      (event) => {
+        console.log('Texto digitado:', event);
+        // Faça o que precisar com o texto digitado
+      }
+    );
 
     return () => {
       subscriptionPrimaryEvent.remove();
       subscriptionSecondaryEvent.remove();
       subscriptionPrimaryTextEvent.remove();
       subscriptionSecondaryTextEvent.remove();
+      subscription.remove();
+      subscriptionText.remove();
     };
   }, []);
 
