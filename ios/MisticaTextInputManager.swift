@@ -2,6 +2,7 @@ import Foundation
 import UIKit
 import Mistica
 import os.log
+import React
 
 
 private let log = OSLog(subsystem: Bundle.main.bundleIdentifier!, category: "MisticaTextInputManager")
@@ -15,7 +16,7 @@ class MisticaTextInputManager: RCTViewManager {
   }
 
   @objc override static func requiresMainQueueSetup() -> Bool {
-    return true
+    return false
   }
 }
 
@@ -25,7 +26,7 @@ class MisticaTextInputManager: RCTViewManager {
 class MisticaTextInput: UIView {
     
     var textField: InputField!
-    
+    var actionEventModuleManager = ActionEventModuleManager()
     
     var placeholderText: String? {
         didSet {
@@ -36,6 +37,14 @@ class MisticaTextInput: UIView {
             textField.placeholderText = "Email"
         }
     }
+    
+    @objc var eventName: String = "" {
+       didSet {
+           if(eventName != ""){
+//               actionEventModuleManager.updateSupportedEvents(eventName)
+           }
+       }
+     }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -69,7 +78,7 @@ class MisticaTextInput: UIView {
         
         print("TESTE", text)
         os_log("Text %@", log: log, type: .info, text)
-        ActionEventModuleManager.emmiter.sendEvent(withName: "onChange", body: [text])
+//        ActionEventModuleManager.emmitter.sendEvent(withName: eventName, body: [text])
     }
     
 

@@ -2,12 +2,12 @@ import Foundation
 import UIKit
 import Mistica
 import os.log
-
+import React
 
 private let log = OSLog(subsystem: Bundle.main.bundleIdentifier!, category: "MisticaButtonManager")
 
 @objc(MisticaButtonManager)
-class ButtonManager: RCTViewManager {
+class MisticaButtonManager: RCTViewManager {
 
   override func view() -> (MisticaButton) {
     return MisticaButton()
@@ -21,10 +21,9 @@ class ButtonManager: RCTViewManager {
 
 
 
-class MisticaButton: UIView {
+class MisticaButton: UIButton {
     
     var button: Button!
-    
     
     var title: String? {
         didSet {
@@ -35,6 +34,15 @@ class MisticaButton: UIView {
           button.title = "Teste"
         }
     }
+    
+    @objc var eventName: String = "" {
+        didSet {
+            if(eventName != ""){
+                ActionEventModuleManager.shared?.updateSupportedEvents(eventName)
+            }
+        }
+    }
+
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -55,28 +63,16 @@ class MisticaButton: UIView {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        
-        // Define o tamanho e a posição do botão quando a visualização é redimensionada
+        // Define o tamanho e a posição do botão quando a visualização é redimensionada sem isso o componente não é renderizado da forma correta
         button.frame = bounds
     }
     
-    @objc func buttonPressed() {
-        print("Button pressed")
-        // Chame a função de callback onPress se ela estiver definida
-        if let onPress = onPress {
-            os_log("Botão Pressionado", log: log, type: .info)
-//            let actionEventModule = ActionEventModule()
-//            actionEventModule.sendEvent(eventName: "onPress")
-              // Você pode passar dados para o JavaScript se necessário
-            ActionEventModuleManager.emmiter.sendEvent(withName: "onPress", body: ["TESTE BOTAO"])
-            onPress([:])
-        }
+    // Método de callback que será chamado quando o botão é pressionado
+       @objc func buttonPressed() {
+           // Emitir evento para o JavaScript
+           ActionEventModuleManager.shared?.emitEvent(withName: eventName, body: nil)
 
-    }
-    
-    
-    // Função de callback onPress que pode ser definida no JavaScript
-    @objc var onPress: RCTBubblingEventBlock?
+       }
     
 }
 

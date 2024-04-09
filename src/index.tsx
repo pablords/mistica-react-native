@@ -6,4 +6,10 @@ const ActionEventEmitter = new NativeEventEmitter(ActionEventModuleManager);
 import { Button } from './components/Button';
 import { TextInput } from './components/TextInput';
 
-export { ActionEventEmitter, CustomMethods, TextInput, Button };
+export {
+  ActionEventEmitter,
+  CustomMethods,
+  ActionEventModuleManager,
+  TextInput,
+  Button,
+};
