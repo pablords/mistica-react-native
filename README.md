@@ -11,53 +11,30 @@ npm install mistica-react-native
 ## Usage
 
 ```js
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useRef, useState } from 'react';
+
 import { Alert, StyleSheet, Text, View } from 'react-native';
-import { Button, TextInput, ActionEventEmitter } from 'mistica-react-native';
+import { Button, TextInput } from 'mistica-react-native';
 
 export default function App() {
-
   const [primaryValue, setPrimaryValueValue] = useState('');
+  const [secondaryValue, setSecondaryValue] = useState('');
 
   const buttonPrimaryEvent = useRef<string>('buttonPrimaryEvent');
   const textPrimaryEvent = useRef<string>('textPrimaryEvent');
-
+  const textSecondaryEvent = useRef<string>('textSecondaryEvent');
 
   const handleChangePrimaryValue = (text: string) => {
     setPrimaryValueValue(text);
   };
 
-
-  const handlePress = (eventName: string) => {
-    Alert.alert(eventName);
+  const handleChangeSecondaryValue = (text: string) => {
+    setSecondaryValue(text);
   };
 
-  useEffect(() => {
-    // Assinando o evento emitido pelo módulo nativo
-    const subscriptionPrimaryEvent = ActionEventEmitter.addListener(
-      buttonPrimaryEvent.current,
-      () => {
-        // Aqui você pode adicionar a lógica desejada quando o botão é pressionado no lado nativo
-        handlePress(buttonPrimaryEvent.current);
-      }
-    );
-
-    // Assinando o evento emitido pelo módulo nativo
-    const subscriptionPrimaryTextEvent = ActionEventEmitter.addListener(
-      textPrimaryEvent.current,
-       // Aqui você pode adicionar a lógica desejada quando o botão é pressionado no lado nativo
-      ({ text }) => {
-        handleChangePrimaryValue(text);
-      }
-    );
-
-
-    return () => {
-      // Aqui removemos os eventos
-      subscriptionPrimaryEvent.remove();
-      subscriptionPrimaryTextEvent.remove();
-    };
-  }, []);
+  const handlePress = () => {
+    Alert.alert('handlePress');
+  };
 
   return (
     <View style={styles.container}>
@@ -70,8 +47,9 @@ export default function App() {
           bottom: 0,
           width: '90%',
         }}
-        inputText={primaryValue}
         eventName={textPrimaryEvent.current}
+        placeholder="Digite seu Email"
+        onChangeText={handleChangePrimaryValue}
       />
 
       <Text
@@ -88,6 +66,34 @@ export default function App() {
           `Event receive in react native context ${textPrimaryEvent.current} - (${primaryValue})`}
       </Text>
 
+      <TextInput
+        style={{
+          position: 'absolute',
+          top: 230,
+          left: 15,
+          right: 0,
+          bottom: 0,
+          width: '90%',
+        }}
+        eventName={textSecondaryEvent.current}
+        placeholder="Digite seu Nome"
+        onChangeText={handleChangeSecondaryValue}
+      />
+
+      <Text
+        style={{
+          position: 'absolute',
+          fontSize: 15,
+          top: 300,
+          left: 40,
+          right: 0,
+          bottom: 0,
+        }}
+      >
+        {secondaryValue &&
+          `Event receive in react native context ${textSecondaryEvent.current} - (${secondaryValue})`}
+      </Text>
+
       <Button
         style={{
           width: 300,
@@ -96,11 +102,12 @@ export default function App() {
           bottom: 20,
           left: 35,
           marginBottom: 60,
+          flex: 1,
         }}
-        text="Primary"
+        title="BOTAO"
         eventName={buttonPrimaryEvent.current}
+        onPress={handlePress}
       />
-
     </View>
   );
 }
@@ -112,11 +119,16 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   box: {
-    width: 60,
+    width: '90%',
     height: 60,
     marginVertical: 20,
+    position: 'absolute',
+    bottom: 10,
+    borderRadius: 10,
+    backgroundColor: 'blue',
   },
 });
+
 
 ```
 
