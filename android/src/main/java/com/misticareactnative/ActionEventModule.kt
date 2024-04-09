@@ -28,10 +28,8 @@ class ActionEventModule(reactContext: ReactApplicationContext) :
     }
 
     @ReactMethod()
-    fun sendEvent(eventName: String) {
-        val params: WritableMap = Arguments.createMap()
-        // params.putInt("buttonId", buttonId)
-        eventEmitter?.emit(eventName, null)
+    fun sendEvent(eventName: String, params: WritableMap? = null) {
+        eventEmitter?.emit(eventName, params)
     }
 
     @ReactMethod

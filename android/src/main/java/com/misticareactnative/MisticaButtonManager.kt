@@ -7,13 +7,14 @@ import com.facebook.react.uimanager.ThemedReactContext
 import com.facebook.react.uimanager.annotations.ReactProp
 import com.telefonica.mistica.button.Button
 
-class ButtonManager : SimpleViewManager<Button>() {
+class MisticaButtonManager : SimpleViewManager<Button>() {
 
     companion object {
-        const val REACT_CLASS = "Button"
+        const val REACT_CLASS = "MisticaButton"
     }
 
     override fun getName(): String {
+        Log.d("MisticaButtonManager", "Criando MisticaButton")
         return REACT_CLASS // Nome pelo qual o componente será referenciado no JavaScript do
         // React Native
     }
@@ -22,38 +23,42 @@ class ButtonManager : SimpleViewManager<Button>() {
         return  Button(context)
     }
 
-    @ReactProp(name = "text")
-    fun setText(view: Button, text: String?) {
-        view.text = text ?: ""
+    @ReactProp(name = "title")
+    fun setText(view: Button, title: String = "") {
+        Log.d("MisticaButtonManager - title", title)
+        view.text = title
     }
 
     @ReactProp(name = "eventName")
     fun setOnClickListener(view: Button, eventName: String) {
       try{
-        Log.d("setOnPressListener", eventName)
+        Log.d("MisticaButtonManager - eventName", eventName)
         view.setOnClickListener {
           val context = view.context as ReactContext
           val actionEventModule = context.getNativeModule(ActionEventModule::class.java)
-          actionEventModule?.sendEvent(eventName)
+          actionEventModule?.sendEvent(eventName, null)
         }
       } catch (e: Exception) {
-         Log.e("CustomButton", "Erro ao chamar sendPressEvent", e)
+         Log.e("MisticaButtonManager", "Erro ao chamar sendPressEvent", e)
       }
     }
 
 
      @ReactProp(name = "insetTop")
      fun setInsetTop(view: Button, insetTop: Int) {
+        Log.d("MisticaButtonManager - insetTop", insetTop.toString())
          view.setPadding(view.paddingLeft, insetTop, view.paddingRight, view.paddingBottom)
      }
 
      @ReactProp(name = "insetBottom")
      fun setInsetBottom(view: Button, insetBottom: Int) {
+        Log.d("MisticaButtonManager - insetBottom", insetBottom.toString())
          view.setPadding(view.paddingLeft, view.paddingTop, view.paddingRight, insetBottom)
      }
 
      @ReactProp(name = "paddingStart")
      fun setPaddingStart(view: Button, paddingStart: Int) {
+        Log.d("MisticaButtonManager - paddingStart", paddingStart.toString())
          view.setPadding(paddingStart, view.paddingTop, view.paddingRight, view.paddingBottom)
      }
 }

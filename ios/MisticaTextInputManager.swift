@@ -30,7 +30,7 @@ class MisticaTextInput: UIView {
     
     @objc var placeholder: String = "" {
         didSet {
-            os_log("Adicionado propiedade title %@", log: log, type: .info, placeholder)
+            os_log("Adicionado propiedade placeholder %@", log: log, type: .info, placeholder)
             // Verifica se o botão já foi inicializado antes de configurar o título
             guard let textField = textField else {
                 return
@@ -41,7 +41,7 @@ class MisticaTextInput: UIView {
     
     @objc var eventName: String = "" {
        didSet {
-           os_log("Adicionado propiedade title %@", log: log, type: .info, eventName)
+           os_log("Adicionado propiedade eventName %@", log: log, type: .info, eventName)
            // Verifica se o botão já foi inicializado antes de configurar o título
            guard let textField = textField else {
                return
