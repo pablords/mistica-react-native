@@ -1,6 +1,7 @@
 # mistica-react-native
 
-framework that contains reusable UI components and utilities
+Exposes native components from the [mistica-ios](https://github.com/Telefonica/mistica-ios) and [mistica-android](https://github.com/Telefonica/mistica-android) libraries to be used as react-native components
+
 
 ## Installation
 
