@@ -34,13 +34,14 @@ const TextInput = (props: MisticaTextInputProps) => {
   const { onChangeText, eventName } = props;
 
   const handleChangeText = useCallback(
-    (text: string) => {
+    ({ text }: any) => {
       onChangeText && onChangeText(text);
     },
     [onChangeText]
   );
 
   useEffect(() => {
+    // Atualiza lista de eventos suportados
     ActionEventModuleManager.updateSupportedEvents(eventName);
     // Listener para o evento onPress enviado do lado nativo
     const onChangeTextListener = ActionEventEmitter.addListener(

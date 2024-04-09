@@ -6,13 +6,14 @@ import com.facebook.react.bridge.*
 import com.facebook.react.module.annotations.ReactModule
 import com.facebook.react.modules.core.DeviceEventManagerModule
 
-@ReactModule(name = "ActionEventModule")
+@ReactModule(name = "ActionEventModuleManager")
 class ActionEventModule(reactContext: ReactApplicationContext) :
         ReactContextBaseJavaModule(reactContext) {
     private var eventEmitter: DeviceEventManagerModule.RCTDeviceEventEmitter? = null
+    private var supportedEventNames: MutableList<String> = mutableListOf();
 
     companion object {
-      const val REACT_CLASS = "ActionEventModule"
+      const val REACT_CLASS = "ActionEventModuleManager"
     }
 
     override fun getName(): String {
@@ -27,7 +28,13 @@ class ActionEventModule(reactContext: ReactApplicationContext) :
         )
     }
 
-    @ReactMethod()
+    // Método para atualizar os eventos suportados com base na propriedade passada pelo componente
+    @ReactMethod
+    fun updateSupportedEvents(event: String) {
+      supportedEventNames.add(event)
+    }
+
+    @ReactMethod
     fun sendEvent(eventName: String, params: WritableMap? = null) {
         eventEmitter?.emit(eventName, params)
     }
