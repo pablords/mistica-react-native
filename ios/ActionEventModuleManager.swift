@@ -5,13 +5,13 @@ import React // Certifique-se de importar o módulo React
 @objc(ActionEventModuleManager)
 open class ActionEventModuleManager: RCTEventEmitter {
   
-    static var shared:ActionEventModuleManager?
+        static var shared:ActionEventModuleManager?
         
         private var supportedEventNames: Set<String> = ["onPress"]
         private var hasAttachedListener = false
         
-        // Allows a shared EventEmitter instance to avoid initializing without the RNBridge
-        // Without this step, you'll run into errors talking aobut a missing bridge
+        // Permite que uma instância compartilhada do EventEmitter evite a inicialização sem o RNBridge
+        // Sem esta etapa, você encontrará erros ao falar sobre uma ponte perdida
         override init() {
             super.init()
             ActionEventModuleManager.shared = self
@@ -26,8 +26,8 @@ open class ActionEventModuleManager: RCTEventEmitter {
                supportedEventNames.insert(event)
            }
         
-        // These functions make sure that there is an attached listener so that events are
-        // only sent when a listener is attached
+         // Estas funções garantem que haja um ouvinte anexado para que os eventos sejam
+        //enviado somente quando um listener está anexado
         open override func startObserving() {
             hasAttachedListener = true
         }
@@ -36,14 +36,14 @@ open class ActionEventModuleManager: RCTEventEmitter {
             hasAttachedListener = false
         }
         
-        // Must return an array of the supported events. Any unsupported events will throw errors
-        // if they are passed in to `sendEvent`
+         // Deve retornar um array dos eventos suportados. Quaisquer eventos não suportados gerarão erros
+        // se eles forem passados para `sendEvent`
         open override func supportedEvents() -> [String] {
             return Array(supportedEventNames)
         }
         
-        // Allows sending of supported events and adds protections for when either no listeners
-        // ar attached or the specified event isn't a supported event
+         // Permite o envio de eventos suportados e adiciona proteções para quando não há ouvintes
+        // está anexado ou o evento especificado não é um evento suportado
         func emitEvent(withName name: String, body: Any!) {
             if hasAttachedListener && supportedEventNames.contains(name) {
                 sendEvent(withName: name, body: body)
