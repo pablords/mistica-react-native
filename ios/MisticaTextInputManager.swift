@@ -28,39 +28,42 @@ class MisticaTextInput: UIView {
     var textField: InputField!
     var actionEventModuleManager = ActionEventModuleManager()
     
-    var placeholderText: String? {
+    @objc var placeholder: String = "" {
         didSet {
+            os_log("Adicionado propiedade title %@", log: log, type: .info, placeholder)
             // Verifica se o botão já foi inicializado antes de configurar o título
             guard let textField = textField else {
                 return
             }
-            textField.placeholderText = "Email"
+            textField.placeholderText = placeholder
         }
     }
     
     @objc var eventName: String = "" {
        didSet {
+           os_log("Adicionado propiedade title %@", log: log, type: .info, eventName)
+           // Verifica se o botão já foi inicializado antes de configurar o título
+           guard let textField = textField else {
+               return
+           }
            if(eventName != ""){
-//               actionEventModuleManager.updateSupportedEvents(eventName)
+               ActionEventModuleManager.shared?.updateSupportedEvents(eventName)
            }
        }
      }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        os_log("Criando MisticaTextInput", log: log, type: .info)
         MisticaConfig.brandStyle = .vivo
-        textField = InputField(style: .email)
-        textField.placeholderText = "Email"
-        textField.validationStrategy = EmailInputFieldValidationStrategy(failureMessage: "Email invalido")
-        textField.validate() // sets the state to .invalid
+        textField = InputField()
+        textField.style = .default
         textField.sizeToFit()
         addSubview(textField)
     }
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        os_log("Criando MisticaTextInput", log: log, type: .info)
-        
         // Define o tamanho e a posição do botão quando a visualização é redimensionada
         textField.frame = bounds
     }
