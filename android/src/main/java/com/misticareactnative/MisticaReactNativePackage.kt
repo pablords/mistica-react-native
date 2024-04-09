@@ -4,7 +4,6 @@ import com.facebook.react.ReactPackage
 import com.facebook.react.bridge.NativeModule
 import com.facebook.react.bridge.ReactApplicationContext
 import com.facebook.react.uimanager.ViewManager
-import com.misticareactnative.ActionEventModule
 
 
 class MisticaReactNativePackage : ReactPackage {
@@ -15,6 +14,6 @@ class MisticaReactNativePackage : ReactPackage {
   }
 
   override fun createViewManagers(reactContext: ReactApplicationContext): List<ViewManager<*, *>> {
-    return listOf(ButtonManager(), TextInputManager())
+    return listOf(MisticaButtonManager(), MisticaTextInputManager())
   }
 }

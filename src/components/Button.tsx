@@ -41,6 +41,7 @@ const Button = (props: MisticaButtonProps) => {
   }, [onPress]);
 
   useEffect(() => {
+    // Atualiza lista de eventos suportados
     ActionEventModuleManager.updateSupportedEvents(eventName);
     // Listener para o evento onPress enviado do lado nativo
     const onPressListener = ActionEventEmitter.addListener(
