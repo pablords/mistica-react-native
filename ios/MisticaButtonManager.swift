@@ -25,18 +25,20 @@ class MisticaButton: UIButton {
     
     var button: Button!
     
-    var title: String? {
+    @objc var title: String = "" {
         didSet {
+            os_log("Adicionado propiedade title %@", log: log, type: .info, title)
             // Verifica se o botão já foi inicializado antes de configurar o título
             guard let button = button else {
                 return
             }
-          button.title = "Teste"
+          button.title = title
         }
     }
     
     @objc var eventName: String = "" {
         didSet {
+            os_log("Adicionado propiedade eventName %@", log: log, type: .info, eventName)
             if(eventName != ""){
                 ActionEventModuleManager.shared?.updateSupportedEvents(eventName)
             }
@@ -50,7 +52,6 @@ class MisticaButton: UIButton {
         MisticaConfig.brandStyle = .vivo
         // Inicializa o botão
         button = Button()
-        button.title = "Teste"
         button.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
         
         // Adiciona o botão à visualização
