@@ -1079,7 +1079,7 @@ DEPENDENCIES:
   - glog (from `../node_modules/react-native/third-party-podspecs/glog.podspec`)
   - hermes-engine (from `../node_modules/react-native/sdks/hermes-engine/hermes-engine.podspec`)
   - libevent (~> 2.1.12)
-  - "Mistica (from `git@github.com:pablords/mistica-ios.git`, branch `podspec-support`)"
+  - Mistica (from `https://github.com/pablords/mistica-ios.git`, branch `podspec-support`)
   - mistica-react-native (from `../..`)
   - RCT-Folly (from `../node_modules/react-native/third-party-podspecs/RCT-Folly.podspec`)
   - RCT-Folly/Fabric (from `../node_modules/react-native/third-party-podspecs/RCT-Folly.podspec`)
@@ -1154,7 +1154,7 @@ EXTERNAL SOURCES:
     :tag: hermes-2024-02-20-RNv0.73.5-18f99ace4213052c5e7cdbcd39ee9766cd5df7e4
   Mistica:
     :branch: podspec-support
-    :git: "git@github.com:pablords/mistica-ios.git"
+    :git: https://github.com/pablords/mistica-ios.git
   mistica-react-native:
     :path: "../.."
   RCT-Folly:
@@ -1245,7 +1245,7 @@ EXTERNAL SOURCES:
 CHECKOUT OPTIONS:
   Mistica:
     :commit: 30b7e355626b36c96d26872c8647822c094e732c
-    :git: "git@github.com:pablords/mistica-ios.git"
+    :git: https://github.com/pablords/mistica-ios.git
 
 SPEC CHECKSUMS:
   boost: d3f49c53809116a5d38da093a8aa78bf551aed09
@@ -1305,6 +1305,6 @@ SPEC CHECKSUMS:
   SocketRocket: f32cd54efbe0f095c4d7594881e52619cfe80b17
   Yoga: 805bf71192903b20fc14babe48080582fee65a80
 
-PODFILE CHECKSUM: 41db6e9830d63b8af34443e192d9dbf9929c9b8d
+PODFILE CHECKSUM: 4da52fa72d95024dd9cfd3e6d475946f6e780764
 
 COCOAPODS: 1.15.2

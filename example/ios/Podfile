@@ -54,7 +54,7 @@ target 'MisticaReactNativeExample' do
   # use_modular_headers!
 
   # pod 'Mistica', :path => '/Users/pablosantos/pocs/mistica-ios', :branch => "podspec-support"
-  pod 'Mistica', :git => 'git@github.com:pablords/mistica-ios.git', :branch => "podspec-support"
+  pod 'Mistica', :git => 'https://github.com/pablords/mistica-ios.git', :branch => "podspec-support"
   pod 'SDWebImage', :modular_headers => true
   pod 'SDWebImageSVGCoder', :modular_headers => true
 
