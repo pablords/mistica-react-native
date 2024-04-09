@@ -1,67 +1,27 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useRef } from 'react';
 
 import { Alert, StyleSheet, Text, View } from 'react-native';
-import { Button, TextInput, ActionEventEmitter } from 'mistica-react-native';
+import { Button, TextInput } from 'mistica-react-native';
 
 export default function App() {
-  const [primaryValue, setPrimaryValueValue] = useState('');
-  const [secondaryValue, setSecondaryValue] = useState('');
+  // const [primaryValue, setPrimaryValueValue] = useState('');
+  // const [secondaryValue, setSecondaryValue] = useState('');
 
   const buttonPrimaryEvent = useRef<string>('buttonPrimaryEvent');
-  const buttonSecondaryEvent = useRef<string>('buttonSecondaryEvent');
   const textPrimaryEvent = useRef<string>('textPrimaryEvent');
   const textSecondaryEvent = useRef<string>('textSecondaryEvent');
 
-  const handleChangePrimaryValue = (text: string) => {
-    setPrimaryValueValue(text);
+  // const handleChangePrimaryValue = (text: string) => {
+  //   setPrimaryValueValue(text);
+  // };
+
+  // const handleChangeSecondaryValue = (text: string) => {
+  //   setSecondaryValue(text);
+  // };
+
+  const handlePress = () => {
+    Alert.alert('handlePress');
   };
-
-  const handleChangeSecondaryValue = (text: string) => {
-    setSecondaryValue(text);
-  };
-
-  const handlePress = (eventName: string) => {
-    Alert.alert(eventName);
-  };
-
-  useEffect(() => {
-    // Assinando o evento emitido pelo módulo nativo
-    const subscriptionPrimaryEvent = ActionEventEmitter.addListener(
-      buttonPrimaryEvent.current,
-      () => {
-        // Aqui você pode adicionar a lógica desejada quando o botão é pressionado no lado nativo
-        handlePress(buttonPrimaryEvent.current);
-      }
-    );
-
-    const subscriptionSecondaryEvent = ActionEventEmitter.addListener(
-      buttonSecondaryEvent.current,
-      () => {
-        handlePress(buttonSecondaryEvent.current);
-      }
-    );
-
-    const subscriptionPrimaryTextEvent = ActionEventEmitter.addListener(
-      textPrimaryEvent.current,
-      ({ text }) => {
-        handleChangePrimaryValue(text);
-      }
-    );
-
-    const subscriptionSecondaryTextEvent = ActionEventEmitter.addListener(
-      textSecondaryEvent.current,
-      ({ text }) => {
-        handleChangeSecondaryValue(text);
-      }
-    );
-
-    return () => {
-      subscriptionPrimaryEvent.remove();
-      subscriptionSecondaryEvent.remove();
-      subscriptionPrimaryTextEvent.remove();
-      subscriptionSecondaryTextEvent.remove();
-    };
-  }, []);
 
   return (
     <View style={styles.container}>
@@ -74,7 +34,6 @@ export default function App() {
           bottom: 0,
           width: '90%',
         }}
-        inputText={primaryValue}
         eventName={textPrimaryEvent.current}
       />
 
@@ -88,8 +47,8 @@ export default function App() {
           bottom: 0,
         }}
       >
-        {primaryValue &&
-          `Event receive in react native context ${textPrimaryEvent.current} - (${primaryValue})`}
+        {/* {primaryValue &&
+          `Event receive in react native context ${textPrimaryEvent.current} - (${primaryValue})`} */}
       </Text>
 
       <TextInput
@@ -101,7 +60,6 @@ export default function App() {
           bottom: 0,
           width: '90%',
         }}
-        inputText={secondaryValue}
         eventName={textSecondaryEvent.current}
       />
 
@@ -115,8 +73,8 @@ export default function App() {
           bottom: 0,
         }}
       >
-        {secondaryValue &&
-          `Event receive in react native context ${textSecondaryEvent.current} - (${secondaryValue})`}
+        {/* {secondaryValue &&
+          `Event receive in react native context ${textSecondaryEvent.current} - (${secondaryValue})`} */}
       </Text>
 
       <Button
@@ -127,21 +85,11 @@ export default function App() {
           bottom: 20,
           left: 35,
           marginBottom: 60,
+          flex: 1,
         }}
         text="Primary"
         eventName={buttonPrimaryEvent.current}
-      />
-
-      <Button
-        style={{
-          width: 300,
-          height: 50,
-          position: 'absolute',
-          bottom: 20,
-          left: 35,
-        }}
-        text="Secondary"
-        eventName={buttonSecondaryEvent.current}
+        onPress={handlePress}
       />
     </View>
   );
@@ -154,8 +102,12 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   box: {
-    width: 60,
+    width: '90%',
     height: 60,
     marginVertical: 20,
+    position: 'absolute',
+    bottom: 10,
+    borderRadius: 10,
+    backgroundColor: 'blue',
   },
 });

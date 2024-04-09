@@ -37,7 +37,8 @@
   "keywords": [
     "react-native",
     "ios",
-    "android"
+    "android",
+    "pod-install"
   ],
   "repository": {
     "type": "git",
