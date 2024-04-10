@@ -29,7 +29,7 @@ class MisticaButtonManager : SimpleViewManager<Button>() {
         view.text = title
     }
 
-    @ReactProp(name = "eventName")
+    @ReactProp(name = "name")
     fun setOnClickListener(view: Button, eventName: String) {
       try{
         Log.d("MisticaButtonManager - eventName", eventName)
