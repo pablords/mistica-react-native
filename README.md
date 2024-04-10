@@ -9,92 +9,53 @@ Exposes native components from the [mistica-ios](https://github.com/Telefonica/m
 npm install mistica-react-native
 ```
 
+### ios
+
+Add mistica-ios dependencies in Podfile
+
+```ruby
+  pod 'Mistica', :git => 'https://github.com/pablords/mistica-ios.git', :branch => "podspec-support"
+  pod 'SDWebImage', :modular_headers => true
+  pod 'SDWebImageSVGCoder', :modular_headers => true
+```
+
+Install pod dependencies
+
+```sh
+cd ios && pod install
+```
+
+### Android
+
+Add mistica-android dependencie in build.gradle
+
+```gradle
+
+repositories {
+  mavenCentral()
+  google()
+}
+
+dependencies {
+  implementation "com.telefonica:mistica:11.2.2"
+}
+```
+
 ## Usage
 
+### Button
+
 ```js
-import React, { useRef, useState } from 'react';
 
-import { Alert, StyleSheet, Text, View } from 'react-native';
-import { Button, TextInput } from 'mistica-react-native';
+import { Button } from 'mistica-react-native';
 
-export default function App() {
-  const [primaryValue, setPrimaryValueValue] = useState('');
-  const [secondaryValue, setSecondaryValue] = useState('');
-
-  const buttonPrimaryEvent = useRef<string>('buttonPrimaryEvent');
-  const textPrimaryEvent = useRef<string>('textPrimaryEvent');
-  const textSecondaryEvent = useRef<string>('textSecondaryEvent');
-
-  const handleChangePrimaryValue = (text: string) => {
-    setPrimaryValueValue(text);
-  };
-
-  const handleChangeSecondaryValue = (text: string) => {
-    setSecondaryValue(text);
-  };
+export function App() {
 
   const handlePress = () => {
     Alert.alert('handlePress');
   };
 
   return (
-    <View style={styles.container}>
-      <TextInput
-        style={{
-          position: 'absolute',
-          top: 100,
-          left: 15,
-          right: 0,
-          bottom: 0,
-          width: '90%',
-        }}
-        eventName={textPrimaryEvent.current}
-        placeholder="Digite seu Email"
-        onChangeText={handleChangePrimaryValue}
-      />
-
-      <Text
-        style={{
-          position: 'absolute',
-          fontSize: 15,
-          top: 170,
-          left: 40,
-          right: 0,
-          bottom: 0,
-        }}
-      >
-        {primaryValue &&
-          `Event receive in react native context ${textPrimaryEvent.current} - (${primaryValue})`}
-      </Text>
-
-      <TextInput
-        style={{
-          position: 'absolute',
-          top: 230,
-          left: 15,
-          right: 0,
-          bottom: 0,
-          width: '90%',
-        }}
-        eventName={textSecondaryEvent.current}
-        placeholder="Digite seu Nome"
-        onChangeText={handleChangeSecondaryValue}
-      />
-
-      <Text
-        style={{
-          position: 'absolute',
-          fontSize: 15,
-          top: 300,
-          left: 40,
-          right: 0,
-          bottom: 0,
-        }}
-      >
-        {secondaryValue &&
-          `Event receive in react native context ${textSecondaryEvent.current} - (${secondaryValue})`}
-      </Text>
-
       <Button
         style={{
           width: 300,
@@ -106,30 +67,43 @@ export default function App() {
           flex: 1,
         }}
         title="BOTAO"
-        eventName={buttonPrimaryEvent.current}
+        eventName={"submit_button"}
         onPress={handlePress}
       />
-    </View>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  box: {
-    width: '90%',
-    height: 60,
-    marginVertical: 20,
-    position: 'absolute',
-    bottom: 10,
-    borderRadius: 10,
-    backgroundColor: 'blue',
-  },
-});
+```
 
+### TextInput
+
+```js
+
+import { TextInput } from 'mistica-react-native';
+
+export default function App() {
+
+
+  const handleChangeText = (text: string) => {
+    console.log(text);
+  };
+
+  return (
+      <TextInput
+        style={{
+          position: 'absolute',
+          top: 230,
+          left: 15,
+          right: 0,
+          bottom: 0,
+          width: '90%',
+        }}
+        eventName={"text_input"}
+        placeholder="Digite seu Nome"
+        onChangeText={handleChangeText}
+      />
+  );
+}
 
 ```
 

@@ -1,9 +1,7 @@
-# source "https://github.com/material-components/material-components-ios.git"
 source 'https://github.com/CocoaPods/Specs.git'
 source 'https://github.com/pablords/mistica-ios.git'
 
-# Plugin que converte SPM em Cocoapds
-# plugin "cocoapods-spm"
+
 
 # Resolve react_native_pods.rb with node to allow for hoisting
 require Pod::Executable.execute_command('node', ['-p',
@@ -16,12 +14,6 @@ require Pod::Executable.execute_command('node', ['-p',
 
 platform :ios, min_ios_version_supported
 prepare_react_native_project!
-
-# Plugin que converte SPM em Cocoapds
-# config_cocoapods_spm(
-#   dont_prebuild_macros: true,
-#   default_macro_config: "debug"
-# )
 
 
 # If you are using a `react-native-flipper` your iOS build will fail when `NO_FLIPPER=1` is set.
@@ -45,33 +37,12 @@ target 'MisticaReactNativeExample' do
   config = use_native_modules!
 
   # use_frameworks!
-
-  # $RNFirebaseAsStaticFramework = true
-  # $RNGoogleMobileAdsAsStaticFramework = true
-  # $RNAdMobAsStaticFramework = true
-  # use_frameworks! :linkage => :static
-
   # use_modular_headers!
 
   # pod 'Mistica', :path => '/Users/pablosantos/pocs/mistica-ios', :branch => "podspec-support"
   pod 'Mistica', :git => 'https://github.com/pablords/mistica-ios.git', :branch => "podspec-support"
   pod 'SDWebImage', :modular_headers => true
   pod 'SDWebImageSVGCoder', :modular_headers => true
-
-  # spm_pkg "Mistica", :url => "https://github.com/Telefonica/mistica-ios.git", 
-  #         :tag => "29.7.3"
-  #         # :products => ["Mistica", "MisticaCommon", "MisticaSwiftUI"]
-  # spm_pkg "SDWebImage", :url => "https://github.com/SDWebImage/SDWebImage.git", :tag => "5.19.1"
-  # spm_pkg "SDWebImageSVGCoder", :url => "https://github.com/SDWebImage/SDWebImageSVGCoder.git", :tag => "1.7.0"
-  # spm_pkg "Lottie", :url => "https://github.com/airbnb/lottie-ios.git", :tag => "4.4.1"
-  # spm_pkg "SnapshotTesting", :url => "https://github.com/pointfreeco/swift-snapshot-testing.git", :tag => "1.8.2"
-
-
-  # pod 'MaterialComponents/Buttons', '~> 124.2.0', :modular_headers => true
-  # pod 'MaterialComponents/TextControls+FilledTextAreas', '~> 124.2.0', :modular_headers => true
-  # pod 'MaterialComponents/TextControls+FilledTextFields', '~> 124.2.0', :modular_headers => true
-  # pod 'MaterialComponents/TextControls+OutlinedTextAreas', '~> 124.2.0', :modular_headers => true
-  # pod 'MaterialComponents/TextControls+OutlinedTextFields', '~> 124.2.0', :modular_headers => true
 
 
   use_react_native!(
@@ -97,13 +68,6 @@ target 'MisticaReactNativeExample' do
       config[:reactNativePath],
       :mac_catalyst_enabled => false
     )
-
-    # installer.pods_project.targets.each do |target|
-    #   target.build_configurations.each do |config|
-    #     # Force CocoaPods targets to always build for x86_64
-    #     config.build_settings['ARCHS[sdk=iphonesimulator*]'] = 'x86_64'
-    #   end
-    # end
 
   end
 end
