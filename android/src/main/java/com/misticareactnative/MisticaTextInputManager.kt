@@ -27,7 +27,7 @@ class MisticaTextInputManager : SimpleViewManager<TextInput>() {
     return TextInput(context) // Cria uma nova instância do componente de botão Mistica
   }
 
-  @ReactProp(name = "eventName")
+  @ReactProp(name = "name")
   fun setOnTextChanged(view: TextInput, eventName: String) {
     try {
       Log.d("MisticaTextInputManager - eventName", eventName)

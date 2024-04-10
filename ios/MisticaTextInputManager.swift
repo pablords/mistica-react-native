@@ -31,21 +31,21 @@ class MisticaTextInput: UIView, InputFieldDelegate {
         // Adicione o texto ao dicionário
         params["text"] = field.text
         os_log("inputFieldTextDidChange %@", log: log, type: .info, params)
-        ActionEventModuleManager.shared?.emitEvent(withName: eventName, body: params)
+        ActionEventModuleManager.shared?.emitEvent(withName: name, body: params)
     }
     
-//    func inputFieldShouldBeginEditing(_ field: Mistica.InputField) -> Bool {
-//        os_log("inputFieldShouldBeginEditing", log: log, type: .info)
-//       return true
-//    }
-//    
-//    func inputFieldShouldReturn(_ field: Mistica.InputField) -> Bool {
-//        os_log("inputFieldShouldReturn", log: log, type: .info)
-//        return true
-//    }
-//    func inputField(_ field: Mistica.InputField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-//        return true
-//    }
+    func inputFieldShouldBeginEditing(_ field: Mistica.InputField) -> Bool {
+        os_log("inputFieldShouldBeginEditing", log: log, type: .info)
+       return true
+    }
+    
+    func inputFieldShouldReturn(_ field: Mistica.InputField) -> Bool {
+        os_log("inputFieldShouldReturn", log: log, type: .info)
+        return true
+    }
+    func inputField(_ field: Mistica.InputField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        return true
+    }
     
     func inputFieldDidBeginEditing(_ field: Mistica.InputField) {
         os_log("inputFieldDidBeginEditing", log: log, type: .info)
@@ -73,7 +73,11 @@ class MisticaTextInput: UIView, InputFieldDelegate {
     
 
     
-    @objc var eventName: String = ""
+    @objc var name: String = "" {
+        didSet {
+            os_log("creating MisticaTextInput - %@", log: log, type: .info, name)
+        }
+    }
 
     // Text
     @objc var text: String? {
@@ -99,7 +103,7 @@ class MisticaTextInput: UIView, InputFieldDelegate {
     }
     
     private func setupTextField() {
-        textField = InputField(style: .email)
+        textField = InputField()
         textField.delegate = self // Defina-se como delegado do textField
         addSubview(textField)
     }
@@ -107,6 +111,27 @@ class MisticaTextInput: UIView, InputFieldDelegate {
     override func layoutSubviews() {
         super.layoutSubviews()
         textField.frame = bounds
+    }
+    
+    @objc var type: String? {
+         didSet {
+             guard let type = type else { return }
+             os_log("adding prop type - %@, %@", log: log, type: .info, type, name)
+             // Converte o tipo de teclado do React Native para o correspondente do iOS
+             let iosKeyboardType = convertType(from: type)
+             textField.style = iosKeyboardType
+         }
+     }
+    
+    private func convertType(from keyboardType: String) -> InputField.Style {
+        switch keyboardType {
+        case "default": return .default
+        case "phoneNumber": return .phoneNumber
+        case "email": return .email
+//        case "password": return .password
+        case "dropdown": return .dropdown
+        default: return .default
+        }
     }
 
     

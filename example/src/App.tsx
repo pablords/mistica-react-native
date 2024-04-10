@@ -32,6 +32,7 @@ export default function App() {
         }}
         placeholder="Digite seu Email"
         onChangeText={handleChangePrimaryValue}
+        type="default"
       />
 
       <Text
@@ -59,6 +60,7 @@ export default function App() {
         }}
         placeholder="Digite seu Nome"
         onChangeText={handleChangeSecondaryValue}
+        type="email"
       />
 
       <Text
