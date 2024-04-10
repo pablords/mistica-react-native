@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useState } from 'react';
 
 import { Alert, StyleSheet, Text, View } from 'react-native';
 import { Button, TextInput } from 'mistica-react-native';
@@ -6,10 +6,6 @@ import { Button, TextInput } from 'mistica-react-native';
 export default function App() {
   const [primaryValue, setPrimaryValueValue] = useState('');
   const [secondaryValue, setSecondaryValue] = useState('');
-
-  const buttonPrimaryEvent = useRef<string>('buttonPrimaryEvent');
-  const textPrimaryEvent = useRef<string>('textPrimaryEvent');
-  const textSecondaryEvent = useRef<string>('textSecondaryEvent');
 
   const handleChangePrimaryValue = (text: string) => {
     setPrimaryValueValue(text);
@@ -34,7 +30,6 @@ export default function App() {
           bottom: 0,
           width: '90%',
         }}
-        eventName={textPrimaryEvent.current}
         placeholder="Digite seu Email"
         onChangeText={handleChangePrimaryValue}
       />
@@ -50,7 +45,7 @@ export default function App() {
         }}
       >
         {primaryValue &&
-          `Event receive in react native context ${textPrimaryEvent.current} - (${primaryValue})`}
+          `Event receive in react native context - (${primaryValue})`}
       </Text>
 
       <TextInput
@@ -62,7 +57,6 @@ export default function App() {
           bottom: 0,
           width: '90%',
         }}
-        eventName={textSecondaryEvent.current}
         placeholder="Digite seu Nome"
         onChangeText={handleChangeSecondaryValue}
       />
@@ -78,7 +72,7 @@ export default function App() {
         }}
       >
         {secondaryValue &&
-          `Event receive in react native context ${textSecondaryEvent.current} - (${secondaryValue})`}
+          `Event receive in react native context - (${secondaryValue})`}
       </Text>
 
       <Button
@@ -92,7 +86,6 @@ export default function App() {
           flex: 1,
         }}
         title="BOTAO"
-        eventName={buttonPrimaryEvent.current}
         onPress={handlePress}
       />
     </View>
