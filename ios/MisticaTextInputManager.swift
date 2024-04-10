@@ -18,74 +18,100 @@ class MisticaTextInputManager: RCTViewManager {
   @objc override static func requiresMainQueueSetup() -> Bool {
     return false
   }
+
 }
 
 
-
-
-class MisticaTextInput: UIView {
-    
+class MisticaTextInput: UIView, InputFieldDelegate {
     var textField: InputField!
-    var actionEventModuleManager = ActionEventModuleManager()
     
-    @objc var placeholder: String = "" {
-        didSet {
-            os_log("Adicionado propiedade placeholder %@", log: log, type: .info, placeholder)
-            // Verifica se o botão já foi inicializado antes de configurar o título
-            guard let textField = textField else {
-                return
-            }
-            textField.placeholderText = placeholder
-        }
+    func inputFieldTextDidChange(_ field: Mistica.InputField) {
+        // Crie um dicionário para armazenar os parâmetros
+        var params = [String: Any]()
+        // Adicione o texto ao dicionário
+        params["text"] = field.text
+        os_log("inputFieldTextDidChange %@", log: log, type: .info, params)
+        ActionEventModuleManager.shared?.emitEvent(withName: eventName, body: params)
     }
     
-    @objc var eventName: String = "" {
-       didSet {
-           os_log("Adicionado propiedade eventName %@", log: log, type: .info, eventName)
-           // Verifica se o botão já foi inicializado antes de configurar o título
-           guard let textField = textField else {
-               return
-           }
-           if(eventName != ""){
-               ActionEventModuleManager.shared?.updateSupportedEvents(eventName)
-           }
-       }
-     }
+//    func inputFieldShouldBeginEditing(_ field: Mistica.InputField) -> Bool {
+//        os_log("inputFieldShouldBeginEditing", log: log, type: .info)
+//       return true
+//    }
+//    
+//    func inputFieldShouldReturn(_ field: Mistica.InputField) -> Bool {
+//        os_log("inputFieldShouldReturn", log: log, type: .info)
+//        return true
+//    }
+//    func inputField(_ field: Mistica.InputField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+//        return true
+//    }
+    
+    func inputFieldDidBeginEditing(_ field: Mistica.InputField) {
+        os_log("inputFieldDidBeginEditing", log: log, type: .info)
+    }
+    
+    func inputFieldDidEndEditing(_ field: Mistica.InputField) {
+        os_log("inputFieldDidEndEditing", log: log, type: .info)
+    }
+    
+    func inputField(_ field: Mistica.InputField, didTapLeadingButton button: UIButton) {
+        os_log("field", log: log, type: .info)
+    }
+    
+    func inputField(_ field: Mistica.InputField, didTapTraillingButton button: UIButton) {
+        os_log("field", log: log, type: .info)
+    }
+    
+    func inputFieldDidUpdateState(_ field: Mistica.InputField) {
+        os_log("inputFieldDidUpdateState", log: log, type: .info)
+    }
+    
+    func inputFieldShouldLayout(_ field: Mistica.InputField) {
+        os_log("inputFieldShouldLayout", log: log, type: .info)
+    }
+    
+
+    
+    @objc var eventName: String = ""
+
+    // Text
+    @objc var text: String? {
+        get { return textField.text }
+        set { textField.text = newValue }
+    }
+
+    // Placeholder
+    @objc var placeholder: String? {
+        get { return textField.placeholderText }
+        set { textField.placeholderText = newValue }
+    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        os_log("Criando MisticaTextInput", log: log, type: .info)
         MisticaConfig.brandStyle = .vivo
-        textField = InputField()
-        textField.style = .default
-        textField.sizeToFit()
+        setupTextField()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        setupTextField()
+    }
+    
+    private func setupTextField() {
+        textField = InputField(style: .email)
+        textField.delegate = self // Defina-se como delegado do textField
         addSubview(textField)
     }
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        // Define o tamanho e a posição do botão quando a visualização é redimensionada
         textField.frame = bounds
     }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    
-    @objc func textFieldDidChange(_ textField: UITextField) {
-        // Enviar o texto digitado para o ActionEventModule
-        guard let text = textField.text else {
-            return
-        }
-        
-        print("TESTE", text)
-        os_log("Text %@", log: log, type: .info, text)
-//        ActionEventModuleManager.emmitter.sendEvent(withName: eventName, body: [text])
-    }
-    
 
     
 }
+
+
 
 
