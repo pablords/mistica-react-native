@@ -5,25 +5,29 @@ import {
   type ButtonProps,
 } from 'react-native';
 import { LINKING_ERROR } from '../utils/errors';
-import { useCallback, useEffect } from 'react';
+import { useCallback, useEffect, useMemo } from 'react';
 import React from 'react';
 import {
   ActionEventEmitter,
   ActionEventModuleManager,
 } from 'mistica-react-native';
-import { generateEventId } from '../utils/event-id';
+import { generateEventHash } from '../utils/event-hash';
 
-interface MisticaButtonProps extends ButtonProps {
+interface MisticaButtonProps extends Omit<ButtonProps, 'onPress'> {
   style?: ViewStyle; // Propriedade customizada para estilos
   text?: string;
   isLoading?: boolean;
   buttonStyle?: string;
   onPress?: () => void;
-  eventName: string;
+  name: string;
   color?: string;
+  title: string;
+  ref?: any;
 }
 
-interface ButtonPropsComponent extends Omit<MisticaButtonProps, 'eventName'> {}
+interface ButtonPropsComponent extends Omit<MisticaButtonProps, 'name'> {
+  onPress: () => void;
+}
 
 const MisticaButtonName = 'MisticaButton';
 const MisticaButton =
@@ -33,32 +37,35 @@ const MisticaButton =
         throw new Error(LINKING_ERROR);
       };
 
-// Componente de botão personalizado que estende o MisticaButton
-const Button = (props: ButtonPropsComponent) => {
-  const { onPress } = props;
-
-  // Função de callback interna que chama o onPress e também dispara o evento para o ActionModuleEventEmitter
+const Button = ({ onPress, ...props }: ButtonPropsComponent) => {
+  // Função de callback interna que chama o onPress no contexto javascript
   const handlePress = useCallback(() => {
     onPress && onPress();
   }, [onPress]);
 
-  const eventName = generateEventId(onPress?.name || '');
+  const componentName = useMemo(() => generateEventHash(MisticaButtonName), []);
+
+  // Crie uma referência memoizada para o componente Button
+  const MemoizedButton = useMemo(
+    () => <MisticaButton {...props} name={componentName} />,
+    [componentName, props] // Nenhuma dependência, o componente Button só será renderizado uma vez
+  );
 
   useEffect(() => {
     // Atualiza lista de eventos suportados
-    ActionEventModuleManager.updateSupportedEvents(eventName);
+    ActionEventModuleManager.updateSupportedEvents(componentName);
     // Listener para o evento onPress enviado do lado nativo
     const onPressListener = ActionEventEmitter.addListener(
-      eventName,
+      componentName,
       handlePress
     );
     // Remove o ouvinte de eventos quando o componente é desmontado
     return () => {
       onPressListener.remove();
     };
-  }, [eventName, handlePress]);
+  }, [componentName, handlePress]);
 
-  return <MisticaButton {...props} eventName={eventName} />;
+  return MemoizedButton;
 };
 
 export { Button };

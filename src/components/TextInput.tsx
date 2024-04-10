@@ -5,13 +5,13 @@ import {
   type TextInputProps,
 } from 'react-native';
 import { LINKING_ERROR } from '../utils/errors';
-import { useCallback, useEffect } from 'react';
+import { useCallback, useEffect, useMemo } from 'react';
 import React from 'react';
 import {
   ActionEventEmitter,
   ActionEventModuleManager,
 } from 'mistica-react-native';
-import { generateEventId } from '../utils/event-id';
+import { generateEventHash } from '../utils/event-hash';
 
 interface MisticaTextInputProps extends TextInputProps {
   style?: ViewStyle; // Propriedade customizada para estilos
@@ -19,11 +19,11 @@ interface MisticaTextInputProps extends TextInputProps {
   inputCounterEnabled?: boolean;
   inputMaxLength?: number;
   inputAutofillEnabled?: boolean;
-  eventName: string;
+  type?: 'default' | 'password' | 'email' | 'phoneNumber' | 'dropdown';
+  name: string;
 }
 
-interface TextInputPropsComponent
-  extends Omit<MisticaTextInputProps, 'eventName'> {}
+interface TextInputPropsComponent extends Omit<MisticaTextInputProps, 'name'> {}
 
 const MisticaTextInputName = 'MisticaTextInput';
 
@@ -44,23 +44,32 @@ const TextInput = (props: TextInputPropsComponent) => {
     [onChangeText]
   );
 
-  const eventName = generateEventId(onChangeText?.name || '');
+  const componentName = useMemo(
+    () => generateEventHash(MisticaTextInputName),
+    []
+  );
+
+  // Crie uma referência memoizada para o componente Button
+  const MemoizedTextInput = useMemo(
+    () => <MisticaTextInput {...props} name={componentName} />,
+    [componentName, props] // Nenhuma dependência, o componente Button só será renderizado uma vez
+  );
 
   useEffect(() => {
     // Atualiza lista de eventos suportados
-    ActionEventModuleManager.updateSupportedEvents(eventName);
+    ActionEventModuleManager.updateSupportedEvents(componentName);
     // Listener para o evento onPress enviado do lado nativo
     const onChangeTextListener = ActionEventEmitter.addListener(
-      eventName,
+      componentName,
       handleChangeText
     );
     // Remove o ouvinte de eventos quando o componente é desmontado
     return () => {
       onChangeTextListener.remove();
     };
-  }, [eventName, handleChangeText]);
+  }, [componentName, handleChangeText]);
 
-  return <MisticaTextInput {...props} eventName={eventName} />;
+  return MemoizedTextInput;
 };
 
 export { TextInput };
