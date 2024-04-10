@@ -67,7 +67,6 @@ export function App() {
           flex: 1,
         }}
         title="BOTAO"
-        eventName={"submit_button"}
         onPress={handlePress}
       />
   );
@@ -81,8 +80,7 @@ export function App() {
 
 import { TextInput } from 'mistica-react-native';
 
-export default function App() {
-
+export function App() {
 
   const handleChangeText = (text: string) => {
     console.log(text);
@@ -98,7 +96,6 @@ export default function App() {
           bottom: 0,
           width: '90%',
         }}
-        eventName={"text_input"}
         placeholder="Digite seu Nome"
         onChangeText={handleChangeText}
       />
@@ -106,6 +103,9 @@ export default function App() {
 }
 
 ```
+
+![buton_input](./docs/button_input.png)
+
 
 ## Contributing
 
