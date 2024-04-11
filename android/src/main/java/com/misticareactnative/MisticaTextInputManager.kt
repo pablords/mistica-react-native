@@ -17,21 +17,23 @@ class MisticaTextInputManager : SimpleViewManager<TextInput>() {
     const val REACT_CLASS = "MisticaTextInput"
   }
 
+  var componentName: String = ""
+
   override fun getName(): String {
+    Log.d("MisticaTextInputManager", "componentName: $this.componentName")
     return REACT_CLASS // Nome pelo qual o componente será referenciado no JavaScript do
     // React Native
   }
 
   override fun createViewInstance(context: ThemedReactContext): TextInput {
-    Log.d("MisticaTextInputManager", "Criando MisticaTextInput")
     return TextInput(context) // Cria uma nova instância do componente de botão Mistica
   }
 
   @ReactProp(name = "name")
   fun setOnTextChanged(view: TextInput, eventName: String) {
     try {
-      Log.d("MisticaTextInputManager - eventName", eventName)
-
+      this.componentName = name
+      Log.d("MisticaTextInputManager", "$name")
       view.addTextChangedListener(
           object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
@@ -39,7 +41,7 @@ class MisticaTextInputManager : SimpleViewManager<TextInput>() {
             }
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-              Log.d("CharSequence", s.toString())
+              Log.d("MisticaTextInputManager", "$this.componentName - text: $s.toString()")
 
               val context = view.context as ReactContext
               val actionEventModule = context.getNativeModule(ActionEventModule::class.java)
@@ -55,37 +57,37 @@ class MisticaTextInputManager : SimpleViewManager<TextInput>() {
           }
       )
     } catch (e: Exception) {
-      Log.e("MisticaTextInputManager", "Erro ao chamar sendPressEvent", e)
+      Log.d("MisticaTextInputManager", "$this.componentName - error: $e")
     }
   }
 
   @ReactProp(name = "inputText")
   fun setInputText(textInput: TextInput, inputText: String) {
-    Log.d("MisticaTextInputManager - inputText", inputText)
+    Log.d("MisticaTextInputManager", "$this.componentName - inputText: $inputText")
     textInput.text = inputText
   }
 
   @ReactProp(name = "placeholder")
   fun setPlaceholder(textInput: TextInput, placeholder: String) {
-    Log.d("MisticaTextInputManager - placeholder", placeholder)
+    Log.d("MisticaTextInputManager", "$this.componentName - placeholder: $placeholder")
     textInput.hint = placeholder
   }
 
   @ReactProp(name = "inputCounterEnabled")
   fun setInputCounterEnabled(textInput: TextInput, inputCounterEnabled: Boolean) {
-    Log.d("MisticaTextInputManager - inputCounterEnabled", inputCounterEnabled.toString())
+    Log.d("MisticaTextInputManager", "$this.componentName - inputCounterEnabled: $inputCounterEnabled.toString()")
     textInput.setCounterEnabled(inputCounterEnabled)
   }
 
   @ReactProp(name = "inputMaxLength")
   fun setInputMaxLength(textInput: TextInput, inputMaxLength: Int) {
-    Log.d("MisticaTextInputManager - inputMaxLength", inputMaxLength.toString())
+    Log.d("MisticaTextInputManager", "$this.componentName - inputMaxLength: $inputMaxLength.toString()")
     textInput.setMaxLength(inputMaxLength)
   }
 
   @ReactProp(name = "inputAutofillEnabled")
   fun setInputAutofillEnabled(textInput: TextInput, inputAutofillEnabled: Boolean) {
-    Log.d("MisticaTextInputManager - inputAutofillEnabled", inputAutofillEnabled.toString())
+    Log.d("MisticaTextInputManager", "$this.componentName - inputAutofillEnabled: $inputAutofillEnabled.toString()")
     textInput.setAutofillEnabled(inputAutofillEnabled)
   }
 }
