@@ -30,65 +30,69 @@ class MisticaTextInput: UIView, InputFieldDelegate {
         var params = [String: Any]()
         // Adicione o texto ao dicionário
         params["text"] = field.text
-        os_log("inputFieldTextDidChange %@", log: log, type: .info, params)
+        os_log("%@ - %@: %@", log: log, type: .info, name, "inputFieldTextDidChange", params)
         ActionEventModuleManager.shared?.emitEvent(withName: name, body: params)
     }
     
     func inputFieldShouldBeginEditing(_ field: Mistica.InputField) -> Bool {
-        os_log("inputFieldShouldBeginEditing", log: log, type: .info)
+        os_log("%@ - inputFieldShouldBeginEditing", log: log, type: .info, name)
        return true
     }
     
     func inputFieldShouldReturn(_ field: Mistica.InputField) -> Bool {
-        os_log("inputFieldShouldReturn", log: log, type: .info)
+        os_log("%@ - inputFieldShouldReturn", log: log, type: .info, name)
         return true
     }
+    
     func inputField(_ field: Mistica.InputField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        os_log("%@ - shouldChangeCharactersIn", log: log, type: .info, name)
         return true
     }
     
     func inputFieldDidBeginEditing(_ field: Mistica.InputField) {
-        os_log("inputFieldDidBeginEditing", log: log, type: .info)
+        os_log("%@ - inputFieldDidBeginEditing", log: log, type: .info, name)
     }
     
     func inputFieldDidEndEditing(_ field: Mistica.InputField) {
-        os_log("inputFieldDidEndEditing", log: log, type: .info)
+        os_log("%@ - inputFieldDidEndEditing", log: log, type: .info, name)
     }
     
     func inputField(_ field: Mistica.InputField, didTapLeadingButton button: UIButton) {
-        os_log("field", log: log, type: .info)
+        os_log("%@ - didTapLeadingButton", log: log, type: .info, name)
     }
     
     func inputField(_ field: Mistica.InputField, didTapTraillingButton button: UIButton) {
-        os_log("field", log: log, type: .info)
+        os_log("%@ - didTapTraillingButton", log: log, type: .info, name)
     }
     
     func inputFieldDidUpdateState(_ field: Mistica.InputField) {
-        os_log("inputFieldDidUpdateState", log: log, type: .info)
+        os_log("%@ - inputFieldDidUpdateState", log: log, type: .info, name)
     }
     
     func inputFieldShouldLayout(_ field: Mistica.InputField) {
-        os_log("inputFieldShouldLayout", log: log, type: .info)
+        os_log("%@ - inputFieldShouldLayout", log: log, type: .info, name)
     }
     
 
     
     @objc var name: String = "" {
         didSet {
-            os_log("creating MisticaTextInput - %@", log: log, type: .info, name)
+            os_log("componentName: %@", log: log, type: .info, name)
         }
     }
-
-    // Text
-    @objc var text: String? {
-        get { return textField.text }
-        set { textField.text = newValue }
+    
+    @objc var text: String = "" {
+        didSet {
+            textField.text = text
+            os_log("%@ - %@: %@", log: log, type: .info, name, "text", text)
+        }
     }
-
-    // Placeholder
-    @objc var placeholder: String? {
-        get { return textField.placeholderText }
-        set { textField.placeholderText = newValue }
+    
+    @objc var placeholder: String = "" {
+        didSet {
+            textField.placeholderText = placeholder
+            os_log("%@ - %@: %@", log: log, type: .info, name, "placeholder", placeholder)
+        }
     }
     
     override init(frame: CGRect) {
@@ -116,7 +120,7 @@ class MisticaTextInput: UIView, InputFieldDelegate {
     @objc var type: String? {
          didSet {
              guard let type = type else { return }
-             os_log("adding prop type - %@, %@", log: log, type: .info, type, name)
+             os_log("%@ - %@: %@", log: log, type: .info, name, "type", type)
              // Converte o tipo de teclado do React Native para o correspondente do iOS
              let iosKeyboardType = convertType(from: type)
              textField.style = iosKeyboardType

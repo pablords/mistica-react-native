@@ -27,7 +27,7 @@ class MisticaButton: UIButton {
     
     @objc var title: String = "" {
         didSet {
-            os_log("adding prop title - %@, %@", log: log, type: .info, title, name)
+            os_log("%@ - %@: %@", log: log, type: .info, name, "title", title)
             // Verifica se o botão já foi inicializado antes de configurar o título
             guard let button = button else {
                 return
@@ -38,7 +38,7 @@ class MisticaButton: UIButton {
     
     @objc var name: String = "" {
         didSet {
-            os_log("creating MisticaButton - %@", log: log, type: .info, name)
+            os_log("componentName: %@", log: log, type: .info, name)
         }
     }
 
@@ -66,6 +66,7 @@ class MisticaButton: UIButton {
     
     // Método de callback que será chamado quando o botão é pressionado
        @objc func buttonPressed() {
+           os_log("%@ - %@", log: log, type: .info, name, "buttonPressed")
            // Emitir evento para o JavaScript
            ActionEventModuleManager.shared?.emitEvent(withName: name, body: nil)
 
