@@ -14,6 +14,8 @@
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		B8060EA22BC2ED6B006BA607 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8060EA12BC2ED6B006BA607 /* XCTest.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		B8060EA62BC2EF04006BA607 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8060EA12BC2ED6B006BA607 /* XCTest.framework */; platformFilter = ios; };
+		B8A990762BC8484E00B13F4F /* GlobalStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8A990752BC8484E00B13F4F /* GlobalStyles.swift */; };
+		B8A990792BC8548600B13F4F /* GlobalStyles.m in Sources */ = {isa = PBXBuildFile; fileRef = B8A990782BC8548600B13F4F /* GlobalStyles.m */; };
 		BFCBDD110A17C2AAAE1032EB /* libPods-MisticaReactNativeExample-MisticaReactNativeExampleTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BCBD4F15EE075435D33A7FF0 /* libPods-MisticaReactNativeExample-MisticaReactNativeExampleTests.a */; settings = {ATTRIBUTES = (Weak, ); }; };
 		DE587BDAF70E0D381C2472B7 /* libPods-MisticaReactNativeExample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E7710A51BE39E8F50589DB59 /* libPods-MisticaReactNativeExample.a */; };
 /* End PBXBuildFile section */
@@ -44,6 +46,9 @@
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = MisticaReactNativeExample/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		89C6BE57DB24E9ADA2F236DE /* Pods-MisticaReactNativeExample-MisticaReactNativeExampleTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MisticaReactNativeExample-MisticaReactNativeExampleTests.release.xcconfig"; path = "Target Support Files/Pods-MisticaReactNativeExample-MisticaReactNativeExampleTests/Pods-MisticaReactNativeExample-MisticaReactNativeExampleTests.release.xcconfig"; sourceTree = "<group>"; };
 		B8060EA12BC2ED6B006BA607 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Platforms/iPhoneOS.platform/Developer/Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		B8A990752BC8484E00B13F4F /* GlobalStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalStyles.swift; sourceTree = "<group>"; };
+		B8A990772BC853F600B13F4F /* MisticaReactNativeExample-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "MisticaReactNativeExample-Bridging-Header.h"; path = "../../../../.Trash/MisticaReactNativeExample-Bridging-Header.h"; sourceTree = "<group>"; };
+		B8A990782BC8548600B13F4F /* GlobalStyles.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GlobalStyles.m; sourceTree = "<group>"; };
 		BCBD4F15EE075435D33A7FF0 /* libPods-MisticaReactNativeExample-MisticaReactNativeExampleTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MisticaReactNativeExample-MisticaReactNativeExampleTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7710A51BE39E8F50589DB59 /* libPods-MisticaReactNativeExample.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MisticaReactNativeExample.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
@@ -91,12 +96,15 @@
 		13B07FAE1A68108700A75B9A /* MisticaReactNativeExample */ = {
 			isa = PBXGroup;
 			children = (
+				B8A990772BC853F600B13F4F /* MisticaReactNativeExample-Bridging-Header.h */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.mm */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */,
 				13B07FB71A68108700A75B9A /* main.m */,
+				B8A990752BC8484E00B13F4F /* GlobalStyles.swift */,
+				B8A990782BC8548600B13F4F /* GlobalStyles.m */,
 			);
 			name = MisticaReactNativeExample;
 			sourceTree = "<group>";
@@ -213,7 +221,7 @@
 						TestTargetID = 13B07F861A680F5B00A75B9A;
 					};
 					13B07F861A680F5B00A75B9A = {
-						LastSwiftMigration = 1120;
+						LastSwiftMigration = 1530;
 					};
 				};
 			};
@@ -400,6 +408,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */,
+				B8A990762BC8484E00B13F4F /* GlobalStyles.swift in Sources */,
+				B8A990792BC8548600B13F4F /* GlobalStyles.m in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -489,6 +499,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = MisticaReactNativeExample;
+				SWIFT_OBJC_BRIDGING_HEADER = "MisticaReactNativeExample-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -515,6 +526,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = MisticaReactNativeExample;
+				SWIFT_OBJC_BRIDGING_HEADER = "MisticaReactNativeExample-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
@@ -601,10 +613,7 @@
 					"-DFOLLY_USE_LIBCPP=1",
 					"-DFOLLY_CFG_NO_COROUTINES=1",
 				);
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					" ",
-				);
+				OTHER_LDFLAGS = "$(inherited)  ";
 				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
 				SDKROOT = iphoneos;
 				USE_HERMES = true;
@@ -684,10 +693,7 @@
 					"-DFOLLY_USE_LIBCPP=1",
 					"-DFOLLY_CFG_NO_COROUTINES=1",
 				);
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					" ",
-				);
+				OTHER_LDFLAGS = "$(inherited)  ";
 				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
 				SDKROOT = iphoneos;
 				USE_HERMES = true;
