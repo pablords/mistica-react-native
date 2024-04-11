@@ -7,10 +7,7 @@ import {
 import { LINKING_ERROR } from '../utils/errors';
 import { useCallback, useEffect, useMemo } from 'react';
 import React from 'react';
-import {
-  ActionEventEmitter,
-  ActionEventModuleManager,
-} from 'mistica-react-native';
+import { ActionEventEmitter, ActionEventModule } from 'mistica-react-native';
 import { generateEventHash } from '../utils/event-hash';
 
 interface MisticaButtonProps extends Omit<ButtonProps, 'onPress'> {
@@ -53,7 +50,7 @@ const Button = ({ onPress, ...props }: ButtonPropsComponent) => {
 
   useEffect(() => {
     // Atualiza lista de eventos suportados
-    ActionEventModuleManager.updateSupportedEvents(componentName);
+    ActionEventModule.updateSupportedEvents(componentName);
     // Listener para o evento onPress enviado do lado nativo
     const onPressListener = ActionEventEmitter.addListener(
       componentName,

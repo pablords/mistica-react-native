@@ -97,7 +97,6 @@ class MisticaTextInput: UIView, InputFieldDelegate {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        MisticaConfig.brandStyle = .vivo
         setupTextField()
     }
     

@@ -1,9 +1,13 @@
 import React, { useState } from 'react';
-
-import { Alert, StyleSheet, Text, View } from 'react-native';
-import { Button, TextInput } from 'mistica-react-native';
+import { Alert, Platform, StyleSheet, Text, View } from 'react-native';
+import { Button, TextInput, GlobalStyle } from 'mistica-react-native';
+import { BRAND } from '../../src/types';
 
 export default function App() {
+  if (Platform.OS == 'ios') {
+    GlobalStyle.configureBrandStyle(BRAND.VIVO);
+  }
+
   const [primaryValue, setPrimaryValueValue] = useState('');
   const [secondaryValue, setSecondaryValue] = useState('');
 

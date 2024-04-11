@@ -45,7 +45,6 @@ class MisticaButton: UIButton {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        MisticaConfig.brandStyle = .vivo
         // Inicializa o botão
         button = Button()
         button.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
