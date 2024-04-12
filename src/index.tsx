@@ -1,23 +1,36 @@
 import { NativeModules, NativeEventEmitter, Platform } from 'react-native';
 import { Button } from './components/Button';
 import { TextInput } from './components/TextInput';
-import type { GlobalStyleProps, ActionEventModuleProps } from './types';
+import type {
+  MisticaGlobalStylesProps,
+  ActionEventModuleProps,
+  MisticaNavigationBarProps,
+} from './types';
 
-const { CustomMethods, ActionEventModuleManager, GlobalStyles } = NativeModules;
+const {
+  CustomMethods,
+  ActionEventModuleManager,
+  MisticaGlobalStylesManager,
+  MisticaNavigationBarManager,
+} = NativeModules;
+
 const ActionEventEmitter = new NativeEventEmitter(ActionEventModuleManager);
-
-let GlobalStyle: GlobalStyleProps;
 const ActionEventModule: ActionEventModuleProps = ActionEventModuleManager;
 
+let MisticaGlobalStyles: MisticaGlobalStylesProps;
+let MisticaNavigationBar: MisticaNavigationBarProps;
+
 if (Platform.OS == 'ios') {
-  GlobalStyle = GlobalStyles;
+  MisticaGlobalStyles = MisticaGlobalStylesManager;
+  MisticaNavigationBar = MisticaNavigationBarManager;
 }
 
 export {
   ActionEventEmitter,
   CustomMethods,
   ActionEventModule,
-  GlobalStyle,
+  MisticaNavigationBar,
+  MisticaGlobalStyles,
   TextInput,
   Button,
 };

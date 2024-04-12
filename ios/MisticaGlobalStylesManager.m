@@ -10,7 +10,7 @@
 
 
 
-@interface RCT_EXTERN_MODULE(GlobalStyles, NSObject)
+@interface RCT_EXTERN_MODULE(MisticaGlobalStylesManager, NSObject)
 
 RCT_EXTERN_METHOD(configureBrandStyle:(NSString *)brandStyle)
 
@@ -19,3 +19,4 @@ RCT_EXTERN_METHOD(configureBrandStyle:(NSString *)brandStyle)
 }
 
 @end
+
