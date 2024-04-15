@@ -1,6 +1,7 @@
 import { NativeModules, NativeEventEmitter, Platform } from 'react-native';
 import { Button } from './components/Button';
 import { TextInput } from './components/TextInput';
+import { Tab } from './components/Tab';
 import type {
   MisticaGlobalStylesProps,
   ActionEventModuleProps,
@@ -33,4 +34,5 @@ export {
   MisticaGlobalStyles,
   TextInput,
   Button,
+  Tab,
 };
